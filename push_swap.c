@@ -6,7 +6,7 @@
 /*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:49:11 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/23 17:06:56 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/02/23 17:08:50 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void push_swap(int argc, char **argv)
 		i++;
 	}
 	
-		
+	
+	
 	clean_array = ft_split(argv[1], " ");
 	while (clean_array[i])
 	{
