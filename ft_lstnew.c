@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lajen-li <lajen-li@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:15:37 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/01/30 11:43:08 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/02/23 17:39:02 by cscaroni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 t_list	*ft_lstnew(void *content)
 {

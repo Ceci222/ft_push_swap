@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lajen-li <lajen-li@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 13:11:27 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/02 15:20:42 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/02/23 17:39:02 by cscaroni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

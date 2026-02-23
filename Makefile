@@ -11,7 +11,7 @@ LIBS = -lft
 
 DIR = srcs/
 
-SRCS = push_swap.c push_swap_utils.c
+SRCS = push_swap.c push_swap_utils.c 
 OBJS = $(SRCS:.c=.o)
 
 CC = cc

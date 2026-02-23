@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lajen-li <lajen-li@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 16:04:20 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/02 13:11:50 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/02/23 17:38:18 by cscaroni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lajen-li <lajen-li@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 12:12:58 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/03 15:07:27 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/02/23 17:38:31 by cscaroni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
