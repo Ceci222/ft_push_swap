@@ -6,13 +6,11 @@
 /*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 13:13:43 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/23 14:01:13 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/02/23 15:17:10 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
-
+#include "push_swap.h"
 
 int	ft_atoi(const char *nptr)
 {
