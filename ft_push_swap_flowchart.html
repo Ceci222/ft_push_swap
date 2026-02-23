@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ft_push_swap — Diagrama de Flujo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --card: #0f0f1a;
+    --border: #1e1e3f;
+    --accent: #00ffcc;
+    --accent2: #ff3366;
+    --accent3: #ffcc00;
+    --text: #c8c8e8;
+    --dim: #5a5a8a;
+    --node-bg: #12122a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 20%, #00ffcc08 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, #ff336608 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-shadow: 0 0 30px #00ffcc66;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: var(--dim);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 50px;
+  }
+
+  .flow {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* Nodes */
+  .node {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    background: var(--node-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 24px;
+    text-align: center;
+    cursor: default;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    animation: fadeIn 0.5s both;
+  }
+
+  .node:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px #00ffcc22;
+  }
+
+  .node .label {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--dim);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .node .title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .node .desc {
+    font-size: 0.78rem;
+    color: var(--text);
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  .node.start { border-color: var(--accent); box-shadow: 0 0 20px #00ffcc33; }
+  .node.start .title { color: var(--accent); }
+
+  .node.decision {
+    background: #120a1a;
+    border-color: #ff336644;
+    clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 20px 100%, 0% 50%);
+    padding: 20px 50px;
+  }
+  .node.decision:hover { border-color: var(--accent2); box-shadow: 0 0 20px #ff336622; }
+  .node.decision .title { color: var(--accent2); }
+
+  .node.phase {
+    border-color: #ffcc0044;
+    max-width: 620px;
+  }
+  .node.phase .title { color: var(--accent3); }
+
+  .node.end {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px #00ffcc44;
+    max-width: 340px;
+  }
+
+  /* Arrows */
+  .arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--border), var(--border));
+    min-height: 32px;
+    position: relative;
+  }
+
+  .arrow::after {
+    content: '▼';
+    position: absolute;
+    bottom: -8px;
+    color: var(--dim);
+    font-size: 0.65rem;
+    background: var(--bg);
+    padding: 0 4px;
+  }
+
+  .arrow.accent { background: linear-gradient(to bottom, var(--accent), #00ffcc44); }
+  .arrow.accent::after { color: var(--accent); }
+  .arrow.warn { background: linear-gradient(to bottom, var(--accent2), #ff336644); }
+
+  .arrow-label {
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 0.15em;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+  }
+
+  /* Branch split */
+  .branch {
+    display: flex;
+    width: 100%;
+    max-width: 760px;
+    gap: 0;
+    position: relative;
+    margin: 0;
+  }
+
+  .branch-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: var(--border);
+  }
+
+  .branch-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0 8px;
+  }
+
+  .branch-col .node { max-width: 100%; font-size: 0.9em; }
+
+  .branch-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    padding: 2px 10px;
+    border-radius: 2px;
+    margin-bottom: 6px;
+  }
+  .branch-tag.yes { color: var(--accent); border: 1px solid #00ffcc44; }
+  .branch-tag.no  { color: var(--accent2); border: 1px solid #ff336644; }
+
+  /* Ops grid */
+  .ops-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 720px;
+    padding: 0 10px;
+  }
+
+  .op {
+    background: #0d0d1f;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 10px;
+    text-align: center;
+    transition: border-color 0.2s;
+    animation: fadeIn 0.6s both;
+  }
+  .op:hover { border-color: var(--accent); }
+  .op .op-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    color: var(--accent3);
+    margin-bottom: 4px;
+  }
+  .op .op-desc { font-size: 0.7rem; color: var(--dim); line-height: 1.5; }
+
+  /* Spacer */
+  .gap { height: 32px; }
+  .gap-sm { height: 16px; }
+
+  /* Section title */
+  .section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--dim);
+    text-align: center;
+    padding: 6px 20px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    font-size: 0.72rem;
+    color: var(--dim);
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+  .note {
+    max-width: 620px;
+    width: 100%;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+    padding: 14px 20px;
+    font-size: 0.75rem;
+    color: var(--dim);
+    line-height: 1.7;
+    text-align: left;
+    margin-top: 4px;
+  }
+  .note span { color: var(--accent3); }
+</style>
+</head>
+<body>
+
+<h1>FT_PUSH_SWAP</h1>
+<p class="subtitle">// DIAGRAMA DE FLUJO — ESTRATEGIA DE IMPLEMENTACIÓN //</p>
+
+<div class="flow">
+
+  <!-- START -->
+  <div class="node start" style="max-width:340px; animation-delay:0s">
+    <div class="label">Punto de entrada</div>
+    <div class="title">main()</div>
+    <div class="desc">Recibir argumentos (argv)</div>
+  </div>
+  <div class="arrow accent" style="height:36px"></div>
+
+  <!-- VALIDACION -->
+  <div class="node phase" style="animation-delay:0.05s">
+    <div class="label">Fase 1</div>
+    <div class="title">PARSING &amp; VALIDACIÓN</div>
+    <div class="desc">
+      Parsear args → convertir a enteros<br>
+      Comprobar duplicados · Comprobar que son números válidos<br>
+      Inicializar stack A con los elementos · stack B vacío
+    </div>
+  </div>
+  <div class="arrow" style="height:36px; position:relative">
+    <span class="arrow-label" style="left:12px">¿error?</span>
+  </div>
+
+  <!-- DECISION: ERROR -->
+  <div class="node decision" style="animation-delay:0.1s">
+    <div class="label">¿Input inválido?</div>
+    <div class="title">VALIDACIÓN OK?</div>
+  </div>
+  <div style="position:relative; width:100%; max-width:560px; height:40px">
+    <svg width="100%" height="40" style="position:absolute">
+      <line x1="50%" y1="0" x2="15%" y2="40" stroke="#ff336666" stroke-width="1.5"/>
+      <line x1="50%" y1="0" x2="85%" y2="40" stroke="#00ffcc44" stroke-width="1.5"/>
+    </svg>
+    <div style="position:absolute; left:6%; top:22px; font-size:0.68rem; color:var(--accent2)">NO → error</div>
+    <div style="position:absolute; right:6%; top:22px; font-size:0.68rem; color:var(--accent)">SÍ → continuar</div>
+  </div>
+
+  <!-- ERROR BOX + CONTINUE -->
+  <div class="branch" style="max-width:560px; margin-top:8px">
+    <div class="branch-col">
+      <div class="node" style="border-color:#ff336644; max-width:100%">
+        <div class="title" style="color:var(--accent2)">ERROR</div>
+        <div class="desc">write "Error\n" → stderr<br>free memory<br>exit(1)</div>
+      </div>
+    </div>
+    <div class="branch-col">
+      <!-- continue to next -->
+      <div class="arrow" style="height:20px"></div>
+    </div>
+  </div>
+
+  <div class="arrow" style="height:36px"></div>
+
+  <!-- DECISION: YA ORDENADO -->
+  <div class="node decision" style="animation-delay:0.15s">
+    <div class="label">Verificación</div>
+    <div class="title">¿Ya está ordenado?</div>
+  </div>
+  <div style="position:relative; width:100%; max-width:560px; height:40px">
+    <svg width="100%" height="40" style="position:absolute">
+      <line x1="50%" y1="0" x2="15%" y2="40" stroke="#00ffcc44" stroke-width="1.5"/>
+      <line x1="50%" y1="0" x2="85%" y2="40" stroke="#ffcc0044" stroke-width="1.5"/>
+    </svg>
+    <div style="position:absolute; left:3%; top:22px; font-size:0.68rem; color:var(--accent)">SÍ → listo</div>
+    <div style="position:absolute; right:5%; top:22px; font-size:0.68rem; color:var(--accent3)">NO → ordenar</div>
+  </div>
+
+  <div class="arrow accent" style="height:36px"></div>
+
+  <!-- DECISION: TAMAÑO -->
+  <div class="node decision" style="animation-delay:0.2s">
+    <div class="label">Elegir algoritmo</div>
+    <div class="title">¿Cuántos elementos?</div>
+  </div>
+
+  <div class="gap-sm"></div>
+
+  <!-- TRES RAMAS -->
+  <div class="branch" style="max-width:760px; gap:6px">
+    <div class="branch-col">
+      <div class="branch-tag yes">n == 2</div>
+      <div class="node" style="border-color:#00ffcc33">
+        <div class="op-name" style="font-family:Orbitron,sans-serif; color:var(--accent); font-size:0.8rem">SORT 2</div>
+        <div class="desc">Si a[0] &gt; a[1]<br>→ sa</div>
+      </div>
+    </div>
+    <div class="branch-col">
+      <div class="branch-tag yes">n == 3</div>
+      <div class="node" style="border-color:#00ffcc33">
+        <div class="op-name" style="font-family:Orbitron,sans-serif; color:var(--accent); font-size:0.8rem">SORT 3</div>
+        <div class="desc">Hardcoded<br>máx 3 ops<br>(6 casos)</div>
+      </div>
+    </div>
+    <div class="branch-col">
+      <div class="branch-tag no">n &gt; 3</div>
+      <div class="node" style="border-color:#ffcc0044">
+        <div class="op-name" style="font-family:Orbitron,sans-serif; color:var(--accent3); font-size:0.8rem">SORT N</div>
+        <div class="desc">Algoritmo<br>principal<br>(radix / turk)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow accent" style="height:36px"></div>
+
+  <!-- ALGORITMO PRINCIPAL -->
+  <div class="node phase" style="animation-delay:0.25s; border-color:#ffcc0066">
+    <div class="label">Fase 2 — Algoritmo principal (n &gt; 3)</div>
+    <div class="title">TURKISH / RADIX SORT</div>
+    <div class="desc">
+      <strong style="color:var(--accent3)">Opción A — Radix:</strong> Asignar índices normalizados · ordenar bit a bit de LSB a MSB usando pa/pb/ra/rb<br><br>
+      <strong style="color:var(--accent3)">Opción B — Turk (recomendado 42):</strong> Encontrar el elemento de menor coste para mover al top de A desde B · calcular rotaciones óptimas (ra/rra + rb/rrb simultáneos) · insertar en posición correcta
+    </div>
+  </div>
+  <div class="arrow" style="height:36px"></div>
+
+  <!-- PUSH A SUBPASOS -->
+  <div class="section-title">PASOS DETALLADOS — TURK ALGORITHM</div>
+
+  <div class="node" style="max-width:640px; animation-delay:0.3s">
+    <div class="label">Paso 2a</div>
+    <div class="title">PUSH A → B (hasta quedar 3 en A)</div>
+    <div class="desc">
+      Mientras A.size &gt; 3 → pb (push al stack B)<br>
+      Optimización: si el elemento es &lt; mediana → rb (mantener B ordenado desc)
+    </div>
+  </div>
+  <div class="arrow" style="height:28px"></div>
+
+  <div class="node" style="max-width:640px; animation-delay:0.35s">
+    <div class="label">Paso 2b</div>
+    <div class="title">SORT 3 en stack A</div>
+    <div class="desc">Ordenar los 3 elementos restantes en A con el algoritmo sort_3</div>
+  </div>
+  <div class="arrow" style="height:28px"></div>
+
+  <div class="node" style="max-width:640px; animation-delay:0.4s">
+    <div class="label">Paso 2c — bucle</div>
+    <div class="title">CALCULAR COSTE Y REINSERTAR B → A</div>
+    <div class="desc">
+      Para cada elemento de B → calcular coste (rotaciones en A + rotaciones en B)<br>
+      Elegir el de menor coste · ejecutar movimientos (dobles rr/rrr cuando sea posible)<br>
+      pa → insertar en A en posición correcta<br>
+      Repetir hasta que B esté vacío
+    </div>
+  </div>
+  <div class="arrow" style="height:28px"></div>
+
+  <div class="node" style="max-width:640px; animation-delay:0.45s">
+    <div class="label">Paso 2d</div>
+    <div class="title">ROTAR A → mínimo al top</div>
+    <div class="desc">
+      Encontrar posición del mínimo en A<br>
+      Si pos &lt; A.size/2 → ra repetido · sino → rra repetido
+    </div>
+  </div>
+
+  <div class="arrow accent" style="height:36px"></div>
+
+  <!-- OPS DISPONIBLES -->
+  <div class="section-title">OPERACIONES DISPONIBLES</div>
+  <div class="ops-grid">
+    <div class="op">
+      <div class="op-name">sa / sb / ss</div>
+      <div class="op-desc">Swap top 2 elementos del stack A / B / ambos</div>
+    </div>
+    <div class="op">
+      <div class="op-name">pa / pb</div>
+      <div class="op-desc">Push top de B→A / A→B</div>
+    </div>
+    <div class="op">
+      <div class="op-name">ra / rb / rr</div>
+      <div class="op-desc">Rotar arriba: top va al fondo (A / B / ambos)</div>
+    </div>
+    <div class="op">
+      <div class="op-name">rra / rrb / rrr</div>
+      <div class="op-desc">Rotar abajo: fondo sube al top (A / B / ambos)</div>
+    </div>
+    <div class="op">
+      <div class="op-name">checker*</div>
+      <div class="op-desc">Lee ops de stdin y verifica si stack queda ordenado</div>
+    </div>
+    <div class="op">
+      <div class="op-name">free/exit</div>
+      <div class="op-desc">Liberar listas enlazadas al finalizar (no leaks)</div>
+    </div>
+  </div>
+
+  <div class="arrow accent" style="height:36px"></div>
+
+  <!-- END -->
+  <div class="node end" style="animation-delay:0.5s">
+    <div class="label">Resultado</div>
+    <div class="title">STACK A ORDENADO ✓</div>
+    <div class="desc">free() → exit(0)</div>
+  </div>
+
+  <!-- NOTA -->
+  <div class="gap"></div>
+  <div class="note">
+    <span>💡 ESTRUCTURA DE DATOS RECOMENDADA:</span> Lista doblemente enlazada circular (t_stack con next/prev).<br>
+    <span>💡 ARCHIVOS SUGERIDOS:</span> main.c · parse.c · ops_swap.c · ops_push.c · ops_rotate.c · sort.c · cost.c · utils.c<br>
+    <span>💡 OBJETIVO DE OPS:</span> ≤3 ops para n=3 · ≤12 para n=5 · ≤700 para n=100 · ≤5500 para n=500
+  </div>
+
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div> Inicio / Fin / Flujo principal</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--accent2)"></div> Decisión / Error</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--accent3)"></div> Fase / Algoritmo</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--dim)"></div> Operación</div>
+</div>
+
+</body>
+</html>
