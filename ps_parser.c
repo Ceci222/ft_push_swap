@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ps_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/12 11:16:56 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/23 18:35:43 by lajen-li         ###   ########.fr       */
+/*   Created: 2026/02/25 11:38:53 by lajen-li          #+#    #+#             */
+/*   Updated: 2026/02/25 16:43:50 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_isalpha(char c)
+void	ft_parser(int argc, char **argv)
 {
-	return ((c > 64 && c < 91) || (c > 96 && c < 123));
+	int	i;
+	char **data;
+	
+	data = ft_strdup("");
+	i = 1;
+	if (argc == 2)
+		// hay que tratarlo como texto
+		data = ft_split(argv[1], '\n');//luego ver como continuar
+	else if (argc > 2)
+		// hay que tratarlo como números individuales
+		while (argc > 1)
+			data = ft_strjoin(argv[i], argv[i + 1]);
+			i++;
 }
 
-/* int	main(void)
+int	main(void)
 {
-	char	letter;
-	int		var;
-
-	letter = 'l';
-	var = ft_isalpha(letter) + '0';
-	write (1, &var, 1);
-	write (1, "\n", 1);
-	return (0);
+	
 }
- */

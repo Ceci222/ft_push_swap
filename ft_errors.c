@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_errors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/12 11:16:56 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/23 18:35:43 by lajen-li         ###   ########.fr       */
+/*   Created: 2026/02/25 14:08:33 by lajen-li          #+#    #+#             */
+/*   Updated: 2026/02/25 16:57:37 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_isalpha(char c)
+void	ft_error(void)
 {
-	return ((c > 64 && c < 91) || (c > 96 && c < 123));
+	write(2, "Error", 5);
+	write(2, "\n", 1);
+	return ;
 }
-
-/* int	main(void)
-{
-	char	letter;
-	int		var;
-
-	letter = 'l';
-	var = ft_isalpha(letter) + '0';
-	write (1, &var, 1);
-	write (1, "\n", 1);
-	return (0);
-}
- */
