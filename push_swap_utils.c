@@ -6,7 +6,7 @@
 /*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 13:13:43 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/25 16:50:26 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/02/26 19:06:50 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,37 @@ int	is_right_number(char *str)
 			return (0);
 		i++;
 	}
+	/* while (str[i])
+	{
+		if (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		{	
+			ft_error();
+			return (0);
+		}
+		i++;
+	} */
+	// VERIFICAR SI HACE FALTA
 	return (1);
 }
+/* 
+int	is_duplicate(char **argv)
+{
+	int	i;
+	int	j;
+
+	if (!argv)
+		return (0);
+	i = 1;
+	while (argv[i] != NULL)
+	{
+		j = i + 1;
+		while(argv[j] != NULL)
+		{
+			if (ft_strcmp(argv[i], argv[j]) == 0)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+} */

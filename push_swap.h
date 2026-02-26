@@ -15,8 +15,10 @@ typedef struct s_list
 void 	push_swap(int argc, char **argv);
 int		is_right_number(char *str);
 void	ft_error(void);
+int		ft_strcmp(const char *s1, const char *s2);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
+int		is_duplicate(char *argv);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));

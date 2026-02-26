@@ -6,13 +6,13 @@
 /*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 15:21:48 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/03 17:09:44 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/02/25 18:16:04 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strcmp(const char *s1, const char *s2, size_t n)
 {
 	size_t		i;
 
