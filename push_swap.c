@@ -6,7 +6,7 @@
 /*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:49:11 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/27 18:18:22 by cscaroni         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:52:47 by cscaroni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,6 @@ void push_swap(int argc, char **argv)
 	}
 }
 
-	
-/* 	clean_array = ft_split(argv[1], " ");
-	while (clean_array[i])
-	{
-		printf("%s", clean_array[i]);
-		i++;
-	}
-	
-	 arg_num = ft_atoi((const char *)argv);
-	if (!argv)
-		ft_printf("Error - Insert number");
-		return ;
-	 
-	return ;
-}*/
-	
 int main(int argc, char **argv)
 {
 	push_swap(argc, argv);
