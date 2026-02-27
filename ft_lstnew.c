@@ -6,13 +6,13 @@
 /*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:15:37 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/23 17:39:02 by cscaroni         ###   ########.fr       */
+/*   Updated: 2026/02/27 16:38:24 by cscaroni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(long content)
 {
 	t_list	*new_node;
 

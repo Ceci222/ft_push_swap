@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:49:11 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/26 19:17:19 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:18:22 by cscaroni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 void push_swap(int argc, char **argv)
 {
-	//int	arg_num;
-	//char **clean_array;
 	int i;
 	long num;
-	
+	t_list	*number_node;
+ 	t_list	*stack_a;
+
+	stack_a = NULL;
 	i = 1;
 	/* if (!argv)
 		return ; */
@@ -27,19 +28,25 @@ void push_swap(int argc, char **argv)
 		if (is_right_number(argv[i]))
 		{
 			num = ft_atol(argv[i]);
-			if ( num > 2147483647 || num < -2147483648)
+			if (num > 2147483647 || num < -2147483648)
+			{
 				return (ft_error());
-			printf("%ld", num);
+			}
+			if (is_duplicate(stack_a, num))
+			{
+				ft_free(stack_a);
+				return ;
+			}
+			number_node = ft_lstnew(num);
+			ft_lstadd_back(&stack_a, number_node);
 			i++;
 		}
 		else
+		{
+			
 			return (ft_error());
+		}
 	}
-	/* while (i < argc)
-	{ 
-		if (is_duplicate(argv[i]))
-			return (ft_error());
-	} */
 }
 
 	
@@ -61,4 +68,5 @@ void push_swap(int argc, char **argv)
 int main(int argc, char **argv)
 {
 	push_swap(argc, argv);
+	//free(argv);
 }

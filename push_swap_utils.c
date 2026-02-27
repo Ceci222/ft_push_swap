@@ -3,15 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 13:13:43 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/26 19:06:50 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:18:46 by cscaroni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+t_list	*ft_lstnew_num(long content)
+{
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node -> content = content;
+	new_node -> next = NULL;
+	new_node -> prev = NULL;
+	new_node -> index = 0;
+	return (new_node);
+}
+
+int	is_duplicate(t_list *stack_a, long num)
+{
+	while (stack_a)
+	{
+		if (stack_a->content == num)
+		{
+			ft_error();
+			return (1);
+		}
+		stack_a = stack_a->next;
+	}
+	return (0);
+}
 int	is_right_number(char *str)
 {
 	int i;
