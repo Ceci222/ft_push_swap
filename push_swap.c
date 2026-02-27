@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:49:11 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/27 18:52:47 by cscaroni         ###   ########.fr       */
+/*   Updated: 2026/02/27 19:13:00 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void push_swap(int argc, char **argv)
 		}
 		else
 		{
-			
+			ft_free(stack_a);
 			return (ft_error());
 		}
 	}
@@ -52,5 +52,4 @@ void push_swap(int argc, char **argv)
 int main(int argc, char **argv)
 {
 	push_swap(argc, argv);
-	//free(argv);
 }
