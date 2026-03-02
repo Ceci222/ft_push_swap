@@ -18,6 +18,7 @@ void 	push_swap(int argc, char **argv);
 int		is_right_number(char *str);
 void	ft_error(void);
 void	ft_free(t_list *stack_a);
+void 	ft_check(char **arg);
 int		is_duplicate(t_list *stack_a, long num);
 int		ft_strcmp(const char *s1, const char *s2);
 void	ft_lstadd_back(t_list **lst, t_list *new);

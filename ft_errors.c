@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_errors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:08:33 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/27 18:06:24 by cscaroni         ###   ########.fr       */
+/*   Updated: 2026/03/02 17:21:21 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_free(t_list *stack_a)
 		free(stack_a);
 		stack_a = next;
 	}
+	free(stack_a);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)

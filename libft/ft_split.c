@@ -6,7 +6,7 @@
 /*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 12:39:01 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/23 15:58:21 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:33:40 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	**ft_split(char const *s, char c)
 	return (res);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 
 int	main(void)
 {
@@ -107,4 +107,4 @@ int	main(void)
 		i++;
 	}
 	free(subs);
-}
+} */

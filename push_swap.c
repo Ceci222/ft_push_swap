@@ -6,7 +6,7 @@
 /*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:49:11 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/27 19:13:00 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/03/02 18:15:36 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,40 @@
 
 void push_swap(int argc, char **argv)
 {
-	int i;
-	long num;
-	t_list	*number_node;
- 	t_list	*stack_a;
+	int 	i;
+	int		k;
+	char	*temp;
+	char	**final_data;
+	char	*full_string;
 
-	stack_a = NULL;
 	i = 1;
-	/* if (!argv)
-		return ; */
-	while (i < argc)
+	full_string = ft_strdup("");
+	if (argc == 2)
 	{
-		if (is_right_number(argv[i]))
-		{
-			num = ft_atol(argv[i]);
-			if (num > 2147483647 || num < -2147483648)
-			{
-				return (ft_error());
-			}
-			if (is_duplicate(stack_a, num))
-			{
-				ft_free(stack_a);
-				return ;
-			}
-			number_node = ft_lstnew(num);
-			ft_lstadd_back(&stack_a, number_node);
+		free(full_string);
+		full_string = ft_strdup(argv[i]);
+	}
+	else if (argc > 2)
+	{
+		while (i < argc)
+		{	
+			temp = ft_strjoin(full_string, " ");
+			free(full_string);
+			full_string = ft_strjoin(temp, argv[i]);
+			free(temp);
 			i++;
 		}
-		else
-		{
-			ft_free(stack_a);
-			return (ft_error());
-		}
 	}
+	final_data = ft_split(full_string, ' ');
+	free(full_string);
+	ft_check(final_data);
+	k = 0;
+	while (final_data[k])
+	{
+		free(final_data[k]);
+		k++;
+	}
+	free(final_data);
 }
 
 int main(int argc, char **argv)
