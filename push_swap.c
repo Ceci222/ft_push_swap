@@ -5,6 +5,7 @@ void push_swap(int argc, char **argv)
 	char	**data_parsed;
 
 	data_parsed = ft_parser(argc, argv);
+	//ft_is_valid_num();
 	ft_check(data_parsed);
 	ft_free_char(data_parsed);
 }

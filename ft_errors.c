@@ -6,16 +6,21 @@ void	ft_error(void)
 	return ;
 }
 
-void	ft_free_lst(t_node *stack_a)
+void	ft_free_stack(t_stack *stack)
 {
+	t_node *current;
 	t_node *next;
 
-	while (stack_a) {
-		next = stack_a->next;
-		free(stack_a);
-		stack_a = next;
+	if (!stack)
+		return ;
+	
+	current = stack -> top;
+	while (current) {
+		next = current -> next;
+		free(current);
+		current = next;
 	}
-	free(stack_a);
+	free(stack);
 }
 void	ft_free_char(char **data_parsed)
 {
