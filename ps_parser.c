@@ -32,8 +32,8 @@ void	ft_check(char **arg)
 {
 	int i;
 	long num;
-	t_list	*number_node;
- 	t_list	*stack_a;
+	t_node	*number_node;
+ 	t_node	*stack_a;
 	
 	i = 0;
 	stack_a = NULL;
@@ -53,5 +53,6 @@ void	ft_check(char **arg)
 		else
 			return (ft_free_lst(stack_a), ft_error());
 	}
-	ft_free_lst(stack_a);
+	//ft_free_lst(stack_a);
+	ft_print_stack(stack_a);
 }

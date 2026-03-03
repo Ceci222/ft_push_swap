@@ -1,20 +1,19 @@
 #include "push_swap.h"
 
-t_list	*ft_lstnew_num(long content)
+t_node	*ft_lstnew_num(long content)
 {
-	t_list	*new_node;
+	t_node	*new_node;
 
-	new_node = malloc(sizeof(t_list));
+	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return (NULL);
 	new_node -> content = content;
 	new_node -> next = NULL;
 	new_node -> prev = NULL;
-	new_node -> index = 0;
 	return (new_node);
 }
 
-int	is_duplicate(t_list *stack_a, long num)
+int	is_duplicate(t_node *stack_a, long num)
 {
 	while (stack_a)
 	{
@@ -43,4 +42,16 @@ int	is_right_number(char *str)
 		i++;
 	}
 	return (1);
+}
+void	ft_print_stack(t_node *stack)
+{
+	t_node	*current;
+
+	current = stack; // Usamos un auxiliar para no perder la cabeza de la lista
+	while (current != NULL)
+	{
+		printf("%ld ", (long)current -> content); // O printf si no usas tu propia librería
+		current = current->next;
+	}
+	printf("\n");
 }

@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_node	*ft_lstlast(t_node *lst)
 {
-	t_list	*aux;
+	t_node	*aux;
 
 	if (!lst)
 		return (NULL);
@@ -17,9 +17,9 @@ t_list	*ft_lstlast(t_list *lst)
 #include <stdio.h>
 int	main(void)
 {
-	t_list	*top;
-	t_list	*temp;
-	t_list	*res;
+	t_node	*top;
+	t_node	*temp;
+	t_node	*res;
 	
 	top = NULL;
 	ft_lstadd_front(&top, ft_lstnew("a"));

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 16:04:20 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/23 17:38:18 by cscaroni         ###   ########.fr       */
+/*   Updated: 2026/03/03 13:40:46 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_node **lst, void (*del)(void *))
 {
-	t_list	*temp;
+	t_node	*temp;
 
 	if (!lst || !del || !*lst)
 		return ;
@@ -37,7 +37,7 @@ void	delete_str(void *content)
 }
 int main(void)
 {
-	t_list	*my_list;
+	t_node	*my_list;
 	char	*str;
 
 	str = ft_strdup("eliminar esto");

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 13:11:27 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/23 17:39:02 by cscaroni         ###   ########.fr       */
+/*   Updated: 2026/03/03 13:40:46 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_node	*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*my_list;
-	t_list	*my_node;
+	t_node	*my_list;
+	t_node	*my_node;
 	void	*res;
 
 	my_list = NULL;
@@ -47,8 +47,8 @@ void	*print_put(void *content)
 
 int	main(void)
 {
-	t_list	*my_list;
-	t_list	*new_list;
+	t_node	*my_list;
+	t_node	*new_list;
 
 	my_list = ft_lstnew(ft_strdup("línea de prueba 1"));
 	ft_lstadd_back(&my_list, ft_lstnew(ft_strdup("línea de prueba 2")));

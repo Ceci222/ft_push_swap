@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 12:09:02 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/23 17:38:54 by cscaroni         ###   ########.fr       */
+/*   Updated: 2026/03/03 13:40:46 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_node *lst)
 {
 	int		count;
-	t_list	*aux;
+	t_node	*aux;
 
 	aux = lst;
 	count = 0;
@@ -31,8 +31,8 @@ int	ft_lstsize(t_list *lst)
 
 int	main(void)
 {
-	t_list	*top;
-	t_list	*temp;
+	t_node	*top;
+	t_node	*temp;
 	int		res;
 
 	top = NULL;

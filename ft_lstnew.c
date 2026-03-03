@@ -1,10 +1,10 @@
 #include "push_swap.h"
 
-t_list	*ft_lstnew(long content)
+t_node	*ft_lstnew(long content)
 {
-	t_list	*new_node;
+	t_node	*new_node;
 
-	new_node = malloc(sizeof(t_list));
+	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return (NULL);
 	new_node -> content = content;
@@ -16,7 +16,7 @@ t_list	*ft_lstnew(long content)
 
 int main(void)
 {
-	t_list	*node;
+	t_node	*node;
 	char 	*text;
 
 	text = "Hola, mundo!";

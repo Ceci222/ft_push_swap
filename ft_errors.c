@@ -6,9 +6,9 @@ void	ft_error(void)
 	return ;
 }
 
-void	ft_free_lst(t_list *stack_a)
+void	ft_free_lst(t_node *stack_a)
 {
-	t_list *next;
+	t_node *next;
 
 	while (stack_a) {
 		next = stack_a->next;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 12:12:58 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/23 17:38:31 by cscaroni         ###   ########.fr       */
+/*   Updated: 2026/03/03 13:40:46 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstiter(t_node *lst, void (*f)(void *))
 {
 	if (!lst || !f)
 		return ;
@@ -34,7 +34,7 @@ void	put_str(void *content)
 
 int	main(void)
 {
-	t_list	*my_list;
+	t_node	*my_list;
 
 	my_list = ft_lstnew(ft_strdup("Primer nodo"));
 	my_list -> next = ft_lstnew(ft_strdup("Segundo nodo"));

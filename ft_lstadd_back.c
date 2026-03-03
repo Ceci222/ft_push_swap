@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_node **lst, t_node *new)
 {
-	t_list	*last;
+	t_node	*last;
 
 	if (!lst || !new)
 		return ;
@@ -19,8 +19,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 #include <stdio.h>
 int	main(void)
 {
-	t_list	*back;
-	t_list	*my_list;
+	t_node	*back;
+	t_node	*my_list;
 	char	*text1;
 	char	*text2;
 	
