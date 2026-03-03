@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_errors.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/25 14:08:33 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/03/02 17:21:21 by lajen-li         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
 void	ft_error(void)
@@ -18,7 +6,7 @@ void	ft_error(void)
 	return ;
 }
 
-void	ft_free(t_list *stack_a)
+void	ft_free_lst(t_list *stack_a)
 {
 	t_list *next;
 
@@ -28,6 +16,18 @@ void	ft_free(t_list *stack_a)
 		stack_a = next;
 	}
 	free(stack_a);
+}
+void	ft_free_char(char **data_parsed)
+{
+	int i;
+	
+	i = 0;
+	while (data_parsed[i])
+	{
+		free(data_parsed[i]);
+		i++;
+	}
+	free(data_parsed);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)

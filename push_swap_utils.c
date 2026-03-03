@@ -44,4 +44,3 @@ int	is_right_number(char *str)
 	}
 	return (1);
 }
-

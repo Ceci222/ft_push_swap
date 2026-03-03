@@ -15,9 +15,11 @@ typedef struct s_list
 }				t_list;
 
 void 	push_swap(int argc, char **argv);
+char	**ft_parser(int argc, char **argv);
 int		is_right_number(char *str);
 void	ft_error(void);
-void	ft_free(t_list *stack_a);
+void	ft_free_lst(t_list *stack_a);
+void	ft_free_char(char **data_parsed);
 void 	ft_check(char **arg);
 int		is_duplicate(t_list *stack_a, long num);
 int		ft_strcmp(const char *s1, const char *s2);
@@ -30,6 +32,5 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(long content);
 int		ft_lstsize(t_list *lst);
-
 
 #endif
