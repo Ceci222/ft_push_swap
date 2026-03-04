@@ -13,16 +13,21 @@ t_node	*ft_create_node(long content)
 	return (new_node);
 }
 
-int	is_duplicate(t_node *node, long num)
+int	is_duplicate(t_stack *stack, long num)
 {
-	while (node)
+	t_node	*current;
+
+	if (!stack)
+		return (0);
+	current = stack -> top;
+	while (current != NULL)
 	{
-		if (node->content == num)
+		if (current -> content == num)
 		{
 			ft_error();
-			return (1);
+			return (0);
 		}
-		node = node->next;
+		current = current -> next;
 	}
 	return (0);
 }
@@ -43,17 +48,19 @@ int	is_right_number(char *str)
 	}
 	return (1);
 }
-void	ft_print_stack(t_node *stack)
+void	ft_print_stack(t_stack *stack)
 {
-	t_node	*current;
+    t_node *current;
 
-	current = stack; // Usamos un auxiliar para no perder la cabeza de la lista
-	while (current != NULL)
-	{
-		printf("%ld ", (long)current -> content); // O printf si no usas tu propia librería
-		current = current->next;
-	}
-	printf("\n");
+    if (!stack) 
+		return;
+    current = stack->bottom; // Accedemos al primer nodo a través de la estructura
+    while (current != NULL)
+    {
+        printf("%ld ", current->content);
+        current = current->prev;
+    }
+    printf("\n");
 }
 t_stack	*ft_create_stack()
 {
@@ -67,7 +74,7 @@ t_stack	*ft_create_stack()
 	return (stack);
 }
 
-void	ft_node_to_top(t_stack *stack, long value)
+void	ft_node_to_bottom(t_stack *stack, long value)
 {
 	t_node	*new;
 
@@ -86,7 +93,6 @@ void	ft_node_to_top(t_stack *stack, long value)
 		stack->top = new;
 	}	
 	stack->size++;
-	
 }
 /*
 - El stack tiene dos punteros. Uno que apunta al primer nodo del mismo y otro que apunta al último nodo. 
@@ -110,7 +116,7 @@ stack->top->prev = new;
 Con esto hace que el que antes era el primer nodo, y que ha sido desplazado, apunte a él.
 
 stack->top = new;
-- Y aquí reasino para que top (el puntero del stack) apunte a new. 
+- Y aquí reasigno para que top (el puntero del stack) apunte a new. 
 
 stack->size++;
 Y por cada elemento que meto al stack, incremento size en 1.

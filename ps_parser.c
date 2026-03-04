@@ -28,29 +28,19 @@ char	**ft_parser(int argc, char **argv)
 	final_data = ft_split(full_string, ' ');
 	return (free(full_string), final_data);
 }
-int	ft_is_valid_num(char *str)
+long	ft_is_valid_num(char *str)
 {
-	int		i;
 	long	num;
 
-	i = 0;
-	while (str)
-	{	
-		if (is_right_number(str[i]))
-		{
-			num = ft_atol(str[i]);
-			if (num > 2147483647 || num < -2147483648)
-				return (ft_error(), NULL);
-			i++;
-		}
-		else
-		{
-			return (ft_error(), NULL);
-		}
-	}
+		if (!is_right_number(str))
+			return (ft_error(), (0));
+		num = ft_atol(str);
+		if (num > 2147483647 || num < -2147483648)
+			return (ft_error(), (0));
+		
 	return (num);
 }
-t_stack	*ft_fill_stack(char **arg, t_stack *stack_a)
+t_stack	*ft_fill_stack(char **arg)
 {
 	int i;
 	long num;
@@ -61,18 +51,25 @@ t_stack	*ft_fill_stack(char **arg, t_stack *stack_a)
 	i = 0;
 	while (arg[i])
 	{	
-		num = ft_is_valid_num(arg[i]);	
-		number_node = ft_lstnew_num(num);
-		if (is_duplicate(number_node, num))
-			return (ft_free_lst(stack_a), NULL);
-		ft_lstadd_back(&stack_a, number_node);
+		if (is_right_number(arg[i]))
+		{
+			num = ft_atol(arg[i]);
+			if (num > 2147483647 || num < -2147483648)
+				return (ft_free_stack(stack_a), ft_error(), NULL);
+			number_node = ft_create_node(num);
+			printf("Valor del nodo: %ld\n", number_node->content);
+			if (is_duplicate(stack_a, num))
+				return (ft_free_stack(stack_a), NULL);
+			ft_node_to_bottom(stack_a, number_node -> content);
+			free(number_node);
+		}
+		else
+		{
+			return (ft_free_stack(stack_a), ft_error(), NULL);
+		}
 		i++;
 	}
-	else
-	{
-		return (ft_free_stack(stack_a), ft_error(), NULL);
-	}
-	//ft_free_lst(stack_a);
 	ft_print_stack(stack_a);
+	ft_free_stack(stack_a);
 	return(stack_a);
 }

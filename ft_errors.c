@@ -15,7 +15,8 @@ void	ft_free_stack(t_stack *stack)
 		return ;
 	
 	current = stack -> top;
-	while (current) {
+	while (current) 
+	{
 		next = current -> next;
 		free(current);
 		current = next;
