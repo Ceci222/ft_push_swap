@@ -18,14 +18,14 @@ int	is_duplicate(t_stack *stack, long num)
 	t_node	*current;
 
 	if (!stack)
-		return (0);
+		return (1);
 	current = stack -> top;
 	while (current != NULL)
 	{
 		if (current -> content == num)
 		{
 			ft_error();
-			return (0);
+			return (1);
 		}
 		current = current -> next;
 	}
