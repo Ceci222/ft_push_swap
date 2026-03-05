@@ -8,14 +8,13 @@ void	ft_error(void)
 
 void	ft_free_stack(t_stack *stack)
 {
-	t_node *current;
-	t_node *next;
+	t_node	*current;
+	t_node	*next;
 
 	if (!stack)
 		return ;
-	
 	current = stack -> top;
-	while (current) 
+	while (current)
 	{
 		next = current -> next;
 		free(current);
@@ -23,10 +22,11 @@ void	ft_free_stack(t_stack *stack)
 	}
 	free(stack);
 }
+
 void	ft_free_char(char **data_parsed)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (data_parsed[i])
 	{
@@ -36,14 +36,3 @@ void	ft_free_char(char **data_parsed)
 	free(data_parsed);
 }
 
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	size_t		i;
-
-	i = 0;
-	while (s1[i] && s1[i] == s2[i])
-	{
-		i++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}

@@ -7,7 +7,6 @@
    		}
    		free(final_data); */
 
-
 /* void	ft_parser(int argc, char **argv)
 {
 	int	i;
@@ -38,3 +37,31 @@
    		}
    		free(res);
 	} */
+//Comentarios del archivo push_swap_utils.c
+/*
+- El stack tiene dos punteros. Uno que apunta al primer nodo del mismo y otro que apunta al último nodo. 
+
+  new->next = stack->top; 
+- El puntero next de nuevo nodo aputa a donde stack está apuntando como top (el nodo que va a ser reemplazado en la primera posición por el nuevo).
+
+- Cuando sólo hay un nodo en el stack, ambos punteros apuntan al mismo nodo.
+
+- Cuando ya hay algo en el stack, al meter un nuevo nodo, este pasa a ocupar el primer lugar en el stack.
+
+- Entonces, el puntero que inicialmente apuntaba a top (el primer nodo que ha ahora ha sido desplazando a segundo lugar) ahora apunta al nuevo nodo que he metido. 
+
+- Y el nodo anterior se está moviendo al final del stack con cada nuevo nodo añadido. 
+
+- Con esto el que incialmente era el primer nodo, al ser desplazado, cada vez se mueve más hacia el final de la lista con lo que bottom siempre apunta a él,
+al menos en nuestro código que siempre agrega top).
+
+stack->top->prev = new; 
+- Aquí el antiguo top (el nodo al que apuntaba el puntero top del stack), ahora tiene como previo a new. 
+Con esto hace que el que antes era el primer nodo, y que ha sido desplazado, apunte a él.
+
+stack->top = new;
+- Y aquí reasigno para que top (el puntero del stack) apunte a new. 
+
+stack->size++;
+Y por cada elemento que meto al stack, incremento size en 1.
+*/

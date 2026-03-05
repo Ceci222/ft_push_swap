@@ -17,7 +17,7 @@ char	**ft_parser(int argc, char **argv)
 	else if (argc > 2)
 	{
 		while (i < argc)
-		{	
+		{
 			temp = ft_strjoin(full_string, " ");
 			free(full_string);
 			full_string = ft_strjoin(temp, argv[i]);
@@ -28,29 +28,18 @@ char	**ft_parser(int argc, char **argv)
 	final_data = ft_split(full_string, ' ');
 	return (free(full_string), final_data);
 }
-long	ft_is_valid_num(char *str)
-{
-	long	num;
 
-		if (!is_right_number(str))
-			return (ft_error(), (0));
-		num = ft_atol(str);
-		if (num > 2147483647 || num < -2147483648)
-			return (ft_error(), (0));
-		
-	return (num);
-}
 t_stack	*ft_fill_stack(char **arg)
 {
-	int i;
-	long num;
+	int		i;
+	long	num;
 	t_node	*number_node;
- 	t_stack	*stack_a;
+	t_stack	*stack_a;
 
 	stack_a = ft_create_stack();
 	i = 0;
 	while (arg[i])
-	{	
+	{
 		if (is_right_number(arg[i]))
 		{
 			num = ft_atol(arg[i]);
@@ -64,12 +53,10 @@ t_stack	*ft_fill_stack(char **arg)
 			free(number_node);
 		}
 		else
-		{
 			return (ft_free_stack(stack_a), ft_error(), NULL);
-		}
 		i++;
 	}
 	ft_print_stack(stack_a);
 	ft_free_stack(stack_a);
-	return(stack_a);
+	return (stack_a);
 }
