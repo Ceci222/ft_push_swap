@@ -21,6 +21,8 @@ typedef struct s_stack
 }			t_stack;
 
 void	ft_print_stack(t_stack *stack);
+void	pb(t_stack *a, t_stack *b);
+void	pa(t_stack *a, t_stack *b);
 void	ft_error(void);
 void	ft_free_stack(t_stack *stack);
 void	ft_free_char(char **data_parsed);

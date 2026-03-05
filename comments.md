@@ -37,20 +37,20 @@ void	pb(t_stack *a, t_stack *b)
 ```
 
 ```c
+#include "push_swap.h"
+
 void	pa(t_stack *a, t_stack *b)
 {
 	t_node *tmp;
 
 	if (!b || b->size == 0)
 		return;
-
 	tmp = b->top;//backup
 	b->top = tmp->next;//al segundo elemento le asigno posción top
 	if (b->top)
 		b->top->prev = NULL; //hago que el nuevo top apunte a null
     else //si me ha quedado la lista vacía
         b->bottom = NULL; //el puntero de bottom debe actuaizarse y apuntar a null
-
 	tmp->next = a->top; //el temporal de mi elemento a mover va a apuntar a la cabeza del stack al que va
 	if (a->top)
 		a->top->prev = tmp; //si había algo en esa posición ahora será segundo elemento así que su previo será mi temporal
@@ -59,16 +59,15 @@ void	pa(t_stack *a, t_stack *b)
 	tmp->prev = NULL; //como ahora es top apunta null
 	a->top = tmp;
 
-    if (b->size == 0)
-    {
-        b->top = NULL;
-        b->bottom = NULL;
-    }
-
     a->size++;
     b->size--;
 
-    if (!b->bottom)
-        b->bottom = tmp;//si el stack de donde quité el nodo queda vacío debo asignar su top y bottom a null
+/*     
+	if (b->size == 0)
+    {
+        b->top = NULL;
+        b->bottom = NULL;
+    } */
+
 }
 ```
