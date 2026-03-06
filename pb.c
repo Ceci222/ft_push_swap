@@ -12,12 +12,12 @@ void	pb(t_stack *a, t_stack *b)
 	a->top = tmp->next;
 	if (a->top)
 		a->top->prev = NULL;
-    else
+	else
         a->bottom = NULL;
 	tmp->next = b->top;
 	if (b->top)
 		b->top->prev = tmp;
-    else
+	else
         b->bottom = tmp;
 	tmp->prev = NULL;
 	b->top = tmp;

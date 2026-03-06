@@ -11,7 +11,7 @@ LIBS = -lft
 
 DIR = srcs/
 
-SRCS = push_swap.c push_swap_utils.c ft_errors_frees.c ft_stacks_nodes.c ps_parser.c
+SRCS = push_swap.c push_swap_utils.c ft_errors_frees.c ft_stacks_nodes.c ps_parser.c pa.c pb.c
 OBJS = $(SRCS:.c=.o)
 
 CC = cc

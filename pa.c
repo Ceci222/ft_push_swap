@@ -12,12 +12,12 @@ void	pa(t_stack *a, t_stack *b)
 	b->top = tmp->next;
 	if (b->top)
 		b->top->prev = NULL;
-    else
+	else
         b->bottom = NULL;
 	tmp->next = a->top;
 	if (a->top)
 		a->top->prev = tmp;
-    else
+	else
         a->bottom = tmp;
 	tmp->prev = NULL;
 	a->top = tmp;

@@ -45,10 +45,10 @@ t_stack	*ft_fill_stack(char **arg)
 			num = ft_atol(arg[i]);
 			if (num > 2147483647 || num < -2147483648)
 				return (ft_free_stack(stack_a), ft_error(), NULL);
-			number_node = ft_create_node(num);
-			printf("Valor del nodo: %ld\n", number_node->content);
 			if (is_duplicate(stack_a, num))
 				return (ft_free_stack(stack_a), NULL);
+			number_node = ft_create_node(num);
+			//printf("Valor del nodo: %ld\n", number_node->content);
 			ft_node_to_bottom(stack_a, number_node -> content);
 			free(number_node);
 		}
@@ -56,7 +56,6 @@ t_stack	*ft_fill_stack(char **arg)
 			return (ft_free_stack(stack_a), ft_error(), NULL);
 		i++;
 	}
-	ft_print_stack(stack_a);
-	ft_free_stack(stack_a);
+	//ft_print_stack(stack_a);
 	return (stack_a);
 }
