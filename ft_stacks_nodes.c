@@ -31,11 +31,11 @@ void	ft_print_stack(t_stack *stack)
 
 	if (!stack)
 		return ;
-	current = stack->bottom;
+	current = stack->top;
 	while (current != NULL)
 	{
 		printf("%ld ", current->content);
-		current = current->prev;
+		current = current->next;
 	}
 	printf("\n");
 }
@@ -54,9 +54,9 @@ void	ft_node_to_bottom(t_stack *stack, long value)
 	}
 	else
 	{
-		new->next = stack->top;
-		stack->top->prev = new;
-		stack->top = new;
+		new->prev = stack->bottom;
+		stack->bottom->next = new;
+		stack->bottom = new;
 	}
 	stack->size++;
 	return ;
