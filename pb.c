@@ -6,6 +6,8 @@ void	pb(t_stack *a, t_stack *b)
 
 	if (!a || a->size == 0)
 		return;
+	if (!b)
+    	return;
 	tmp = a->top;
 	a->top = tmp->next;
 	if (a->top)

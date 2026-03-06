@@ -28,11 +28,11 @@ void	pb(t_stack *a, t_stack *b)
     a->size--;
 	b->size++;
 
-    if (a->size == 0) //si el stack de donde quité el nodo queda vacío debo asignar su top y bottom a null
+/*     if (a->size == 0) //si el stack de donde quité el nodo queda vacío debo asignar su top y bottom a null
     {
         a->top = NULL;
         a->bottom = NULL;
-    }
+    } */
 }
 ```
 

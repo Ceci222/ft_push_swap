@@ -6,6 +6,8 @@ void	pa(t_stack *a, t_stack *b)
 
 	if (!b || b->size == 0)
 		return;
+	if (!a)
+    	return;
 	tmp = b->top;
 	b->top = tmp->next;
 	if (b->top)
