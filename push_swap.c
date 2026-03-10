@@ -4,18 +4,25 @@ void	push_swap(int argc, char **argv)
 {
 	t_stack	*stack_b;
 	t_stack	*stack_a;
-
 	char	**data_parsed;
+
 	stack_b = ft_create_stack();
 	data_parsed = ft_parser(argc, argv);
 	stack_a = ft_fill_stack(data_parsed);
+	if (!stack_a || !stack_b)
+		{
+			ft_free_stack(stack_b);
+			ft_free_stack(stack_a);
+			ft_free_char(data_parsed);
+			return ;
+		}
 	pb(stack_a, stack_b);
-	ft_print_stack(stack_b);
+	free_and_print(stack_a, stack_b, data_parsed);
+	/* ft_print_stack(stack_b);
 	ft_free_stack(stack_b);
 	ft_print_stack(stack_a);
 	ft_free_stack(stack_a);
-	ft_free_char(data_parsed);
-	
+	ft_free_char(data_parsed); */
 }
 
 int	main(int argc, char **argv)

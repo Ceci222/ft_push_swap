@@ -34,6 +34,7 @@ void	ft_lstdelone(t_node *lst, void (*del)(void *));
 void	ft_lstiter(t_node *lst, void (*f)(void *));
 void	ft_free_stack(t_stack *stack);
 void	ft_node_to_bottom(t_stack *stack, long value);
+void	free_and_print(t_stack *stack_a, t_stack *stack_b, char **data);
 int		is_right_number(char *str);
 int		is_duplicate(t_stack *stack, long num);
 int		ft_lstsize(t_node *lst);

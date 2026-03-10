@@ -21,10 +21,9 @@ void	pb(t_stack *a, t_stack *b)
         b->bottom = tmp;
 	tmp->prev = NULL;
 	b->top = tmp;
-
     a->size--;
 	b->size++;
-
+	write(1, "pb", 1);
 /* REDUNDANTE, NO HACE FALTA
 	if (a->size == 0)
     {
