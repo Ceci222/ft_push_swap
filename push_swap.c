@@ -8,7 +8,7 @@ void	push_swap(int argc, char **argv)
 	char	**data_parsed;
 	stack_b = ft_create_stack();
 	data_parsed = ft_parser(argc, argv);
-	stack_a = ft_fill_stack(data_parsed);
+	stack_a = ft_fill_stack(data_parsed);git pull
 	pb(stack_a, stack_b);
 	ft_print_stack(stack_b);
 	ft_free_stack(stack_b);
