@@ -23,7 +23,8 @@ void	pb(t_stack *a, t_stack *b)
 	b->top = tmp;
     a->size--;
 	b->size++;
-	write(1, "pb", 1);
+	write(1, "pb", 2);
+	write(1, "\n", 1);
 /* REDUNDANTE, NO HACE FALTA
 	if (a->size == 0)
     {

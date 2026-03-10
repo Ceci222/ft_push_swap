@@ -24,7 +24,8 @@ void	pa(t_stack *a, t_stack *b)
 
     a->size++;
     b->size--;
-	write(1, "pa", 1);
+	write(1, "pa", 2);
+	write(1, "\n", 1);
 /*     
 	if (b->size == 0)
     {

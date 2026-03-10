@@ -1,36 +1,47 @@
 #include "push_swap.h"
 
+void	swap_one(t_stack *stack)
+{
+	t_node *tmp_top;
+	t_node *tmp_second;
+
+	if (!stack || stack->size < 2)
+		return;
+	tmp_top = stack->top;
+	tmp_second = stack->top->next;
+	tmp_top->prev = tmp_second;
+
+	if (stack->size == 2)
+		tmp_top->next = NULL;
+	else
+		tmp_top->next = tmp_second->next;
+
+	stack->top = tmp_second;
+	stack->top->next = tmp_top;
+	stack->top->prev = NULL;
+	
+	if (tmp_top->next == NULL)
+		stack->bottom = tmp_top;
+	else
+		tmp_top->next->prev = tmp_top;
+}
 void	sa(t_stack *a)
 {
-	t_node *tmp;
+	swap_one(a);
+	write(1, "sa", 2);
+	write(1, "\n", 1);
+}
+void	sb(t_stack *b)
+{
+	swap_one(b);
+	write(1, "sb", 2);
+	write(1, "\n", 1);
+}
 
-	if (!a || a->size < 2)
-		return;
-	tmp = a->top;
-	a->top = tmp->next;
-	a->top->next = tmp;
-	a->top->prev = NULL;
-	/* if (a->top)
-		b->top->prev = NULL;
-	else
-        b->bottom = NULL; */
-	tmp->prev = a->top;
-	//up to here
-	if (a->top)
-		a->top->prev = tmp;
-	else
-        a->bottom = tmp;
-	tmp->prev = NULL;
-	a->top = tmp;
-
-    a->size++;
-    b->size--;
-
-/*     
-	if (b->size == 0)
-    {
-        b->top = NULL;
-        b->bottom = NULL;
-    } */
-
+void	ss(t_stack *a, t_stack *b)
+{
+	swap_one(a);
+	swap_one(b);
+	write(1, "ss", 2);
+	write(1, "\n", 1);
 }

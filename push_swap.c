@@ -17,6 +17,12 @@ void	push_swap(int argc, char **argv)
 			return ;
 		}
 	pb(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	sa(stack_a);
+	//ss(stack_a, stack_b);
+	//sb(stack_b);
+
 	free_and_print(stack_a, stack_b, data_parsed);
 	/* ft_print_stack(stack_b);
 	ft_free_stack(stack_b);
