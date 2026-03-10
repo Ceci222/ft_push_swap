@@ -20,6 +20,9 @@ void	push_swap(int argc, char **argv)
 	pb(stack_a, stack_b);
 	pb(stack_a, stack_b);
 	sa(stack_a);
+	rra(stack_a);
+	rrb(stack_b);
+	rrr(stack_a, stack_b);
 	//ss(stack_a, stack_b);
 	//sb(stack_b);
 	free_and_print(stack_a, stack_b, data_parsed);
