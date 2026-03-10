@@ -26,3 +26,29 @@ void	pa(t_stack *a, t_stack *b)
 	write(1, "pa", 2);
 	write(1, "\n", 1);
 }
+void	pb(t_stack *a, t_stack *b)
+{
+	t_node	*tmp;
+
+	if (!a || a->size == 0)
+		return ;
+	if (!b)
+		return ;
+	tmp = a->top;
+	a->top = tmp->next;
+	if (a->top)
+		a->top->prev = NULL;
+	else
+		a->bottom = NULL;
+	tmp->next = b->top;
+	if (b->top)
+		b->top->prev = tmp;
+	else
+		b->bottom = tmp;
+	tmp->prev = NULL;
+	b->top = tmp;
+	a->size--;
+	b->size++;
+	write(1, "pb", 2);
+	write(1, "\n", 1);
+}
