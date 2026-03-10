@@ -2,33 +2,27 @@
 
 void	pb(t_stack *a, t_stack *b)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	if (!a || a->size == 0)
-		return;
+		return ;
 	if (!b)
-    	return;
+		return ;
 	tmp = a->top;
 	a->top = tmp->next;
 	if (a->top)
 		a->top->prev = NULL;
 	else
-        a->bottom = NULL;
+		a->bottom = NULL;
 	tmp->next = b->top;
 	if (b->top)
 		b->top->prev = tmp;
 	else
-        b->bottom = tmp;
+		b->bottom = tmp;
 	tmp->prev = NULL;
 	b->top = tmp;
-    a->size--;
+	a->size--;
 	b->size++;
 	write(1, "pb", 2);
 	write(1, "\n", 1);
-/* REDUNDANTE, NO HACE FALTA
-	if (a->size == 0)
-    {
-        a->top = NULL;
-        a->bottom = NULL;
-    } */
 }

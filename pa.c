@@ -2,35 +2,27 @@
 
 void	pa(t_stack *a, t_stack *b)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	if (!b || b->size == 0)
-		return;
+		return ;
 	if (!a)
-    	return;
+		return ;
 	tmp = b->top;
 	b->top = tmp->next;
 	if (b->top)
 		b->top->prev = NULL;
 	else
-        b->bottom = NULL;
+		b->bottom = NULL;
 	tmp->next = a->top;
 	if (a->top)
 		a->top->prev = tmp;
 	else
-        a->bottom = tmp;
+		a->bottom = tmp;
 	tmp->prev = NULL;
 	a->top = tmp;
-
-    a->size++;
-    b->size--;
+	a->size++;
+	b->size--;
 	write(1, "pa", 2);
 	write(1, "\n", 1);
-/*     
-	if (b->size == 0)
-    {
-        b->top = NULL;
-        b->bottom = NULL;
-    } */
-
 }
