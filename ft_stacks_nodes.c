@@ -25,6 +25,7 @@ t_node	*ft_create_node(long content)
 	new_node -> prev = NULL;
 	return (new_node);
 }
+
 void	ft_print_stack(t_stack *stack)
 {
 	t_node	*current;
