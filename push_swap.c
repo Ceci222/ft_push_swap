@@ -20,10 +20,9 @@ void	push_swap(int argc, char **argv)
 		sort_two(stack_a);
  	if (stack_a->size == 3)
 		sort_three(stack_a);
-	/*
 	if (stack_a->size == 4)
-		sort_three(stack_a);
-	if (stack_a->size == 5)
+		sort_four(stack_a, stack_b);
+	/*if (stack_a->size == 5)
 		sort_three(stack_a); */
 
 	free_and_print(stack_a, stack_b, data_parsed);
