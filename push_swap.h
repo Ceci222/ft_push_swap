@@ -47,6 +47,8 @@ void	reverse_rotate(t_stack *stack);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
+void	sort_two(t_stack *stack);
+void	sort_three(t_stack *stack);
 int		is_right_number(char *str);
 int		is_duplicate(t_stack *stack, long num);
 int		ft_lstsize(t_node *lst);

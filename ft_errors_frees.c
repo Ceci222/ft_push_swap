@@ -38,9 +38,9 @@ void	ft_free_char(char **data_parsed)
 
 void	free_and_print(t_stack *stack_a, t_stack *stack_b, char **data)
 {
-	ft_print_stack(stack_b);
-	ft_free_stack(stack_b);
 	ft_print_stack(stack_a);
 	ft_free_stack(stack_a);
+	ft_print_stack(stack_b);
+	ft_free_stack(stack_b);
 	ft_free_char(data);
 }
