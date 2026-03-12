@@ -14,7 +14,6 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b)
 	fourth = third->next;
 	fifth = stack_a->bottom;
 
-
 	/* if (first->content < second->content && second->content < third->content 
 		&& third->content < fourth->content)
 		return ; */
