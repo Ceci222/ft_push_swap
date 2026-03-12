@@ -21,24 +21,30 @@ void	rotate(t_stack *stack)
 	stack->top->prev = NULL;
 }
 
-void	ra(t_stack *a)
+void	ra(t_stack *a, t_counter *count)
 {
 	rotate(a);
+	if(count)
+		count->ra++;
 	write(1, "ra", 2);
 	write(1, "\n", 1);
 }
 
-void	rb(t_stack *b)
+void	rb(t_stack *b, t_counter *count)
 {
 	rotate(b);
+	if(count)
+		count->rb++;
 	write(1, "rb", 2);
 	write(1, "\n", 1);
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	rr(t_stack *a, t_stack *b, t_counter *count)
 {
 	rotate(a);
 	rotate(b);
+	if(count)
+		count->rr++;
 	write(1, "rr", 2);
 	write(1, "\n", 1);
 }

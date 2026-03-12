@@ -21,24 +21,30 @@ void	reverse_rotate(t_stack *stack)
 	stack->bottom->next = NULL;
 }
 
-void	rra(t_stack *a)
+void	rra(t_stack *a, t_counter *count)
 {
 	reverse_rotate(a);
+	if(count)
+		count->rra++;
 	write(1, "rra", 3);
 	write(1, "\n", 1);
 }
 
-void	rrb(t_stack *b)
+void	rrb(t_stack *b, t_counter *count)
 {
 	reverse_rotate(b);
+	if(count)
+		count->rrb++;
 	write(1, "rrb", 3);
 	write(1, "\n", 1);
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_stack *a, t_stack *b, t_counter *count)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
+	if(count)
+		count->rrr++;
 	write(1, "rrr", 3);
 	write(1, "\n", 1);
 }

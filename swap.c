@@ -23,24 +23,30 @@ void	swap_one(t_stack *stack)
 		tmp_top->next->prev = tmp_top;
 }
 
-void	sa(t_stack *a)
+void	sa(t_stack *a, t_counter *count)
 {
 	swap_one(a);
+	if(count)
+		count->sa++;
 	write(1, "sa", 2);
 	write(1, "\n", 1);
 }
 
-void	sb(t_stack *b)
+void	sb(t_stack *b, t_counter *count)
 {
 	swap_one(b);
+	if(count)
+		count->sb++;
 	write(1, "sb", 2);
 	write(1, "\n", 1);
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	ss(t_stack *a, t_stack *b, t_counter *count)
 {
 	swap_one(a);
 	swap_one(b);
+	if(count)
+		count->ss++;
 	write(1, "ss", 2);
 	write(1, "\n", 1);
 }

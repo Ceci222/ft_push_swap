@@ -20,6 +20,21 @@ typedef struct s_stack
 	t_node	*bottom;
 }			t_stack;
 
+typedef struct s_counter
+{
+	int	pa;
+	int	pb;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}			t_counter;
+
 void	ft_print_stack(t_stack *stack);
 void	pb(t_stack *a, t_stack *b);
 void	pa(t_stack *a, t_stack *b);

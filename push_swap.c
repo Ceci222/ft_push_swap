@@ -5,6 +5,7 @@ void	push_swap(int argc, char **argv)
 	t_stack	*stack_b;
 	t_stack	*stack_a;
 	char	**data_parsed;
+	t_counter	*count;
 
 	stack_b = ft_create_stack();
 	data_parsed = ft_parser(argc, argv);
@@ -24,6 +25,7 @@ void	push_swap(int argc, char **argv)
 		sort_four(stack_a, stack_b);
 	if (stack_a->size == 5)
 		sort_five(stack_a, stack_b);
+	printf("Cantidad de movimientos sa: %d", count->sa);
 
 	free_and_print(stack_a, stack_b, data_parsed);
 }
