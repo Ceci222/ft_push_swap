@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	sort_three(t_stack *stack)
+void	sort_three(t_stack *stack, t_counter *counter)
 {
 	t_node	*first;
 	t_node	*second;
@@ -14,17 +14,17 @@ void	sort_three(t_stack *stack)
 		return ; */
 	if (first->content < second->content && third->content < second->content
 		&& first->content > third->content)
-		return(rra(stack),(void)(0));
+		return(rra(stack, counter),(void)(0));
 	if (first->content > second->content && second->content > third->content)
-		return(sa(stack), rra(stack),  (void)(0));
+		return(sa(stack, counter), rra(stack, counter),  (void)(0));
 	if (first->content < second->content && second->content > third->content
 		&& first->content <  third->content)
-		return(rra(stack), sa(stack), (void)(0));
+		return(rra(stack, counter), sa(stack, counter), (void)(0));
 	if (first->content > second->content && second->content < third->content
 		&& first->content < third->content)
-		return(sa(stack), (void)(0));
+		return(sa(stack, counter), (void)(0));
 	if (first->content > second->content && second->content < third->content 
 		&& first->content > third->content)
-		return(ra(stack), (void)(0));
+		return(ra(stack, counter), (void)(0));
 	return ;
 }

@@ -5,8 +5,9 @@ void	push_swap(int argc, char **argv)
 	t_stack	*stack_b;
 	t_stack	*stack_a;
 	char	**data_parsed;
-	t_counter	*count;
+	t_counter	counter;
 
+	ft_create_counter(&counter);
 	stack_b = ft_create_stack();
 	data_parsed = ft_parser(argc, argv);
 	stack_a = ft_fill_stack(data_parsed);
@@ -18,15 +19,25 @@ void	push_swap(int argc, char **argv)
 		return ;
 	}
 	if (stack_a->size == 2)
-		sort_two(stack_a);
+		sort_two(stack_a, &counter);
  	if (stack_a->size == 3)
-		sort_three(stack_a);
+		sort_three(stack_a, &counter);
 	if (stack_a->size == 4)
-		sort_four(stack_a, stack_b);
+		sort_four(stack_a, stack_b, &counter);
 	if (stack_a->size == 5)
-		sort_five(stack_a, stack_b);
-	printf("Cantidad de movimientos sa: %d", count->sa);
-
+		sort_five(stack_a, stack_b, &counter);
+	printf("Cantidad de movimientos sa: %d\n", counter.sa);
+	printf("Cantidad de movimientos sb: %d\n", counter.sb);
+	printf("Cantidad de movimientos ss: %d\n", counter.ss);
+	printf("Cantidad de movimientos pb: %d\n", counter.pb);
+	printf("Cantidad de movimientos pa: %d\n", counter.pa);
+	printf("Cantidad de movimientos ra: %d\n", counter.ra);
+	printf("Cantidad de movimientos rb: %d\n", counter.rb);
+	printf("Cantidad de movimientos rr: %d\n", counter.rr);
+	printf("Cantidad de movimientos rra: %d\n", counter.rra);
+	printf("Cantidad de movimientos rrb: %d\n", counter.rrb);
+	printf("Cantidad de movimientos rrr: %d\n", counter.rrr);
+	
 	free_and_print(stack_a, stack_b, data_parsed);
 }
 
