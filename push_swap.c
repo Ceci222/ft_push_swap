@@ -11,7 +11,6 @@ void	push_swap(int argc, char **argv)
 	stack_b = ft_create_stack();
 	data_parsed = ft_parser(argc, argv);
 	stack_a = ft_fill_stack(data_parsed);
-	printf("Disorder: %.2f\n", ft_compute_disorder(stack_a));
 	if (!stack_a || !stack_b)
 	{
 		ft_free_stack(stack_b);
@@ -19,6 +18,7 @@ void	push_swap(int argc, char **argv)
 		ft_free_char(data_parsed);
 		return ;
 	}
+	printf("Disorder: %.2f\n", ft_compute_disorder(stack_a));
 	if (stack_a->size == 2)
 		sort_two(stack_a, &counter);
  	if (stack_a->size == 3)
@@ -39,7 +39,6 @@ void	push_swap(int argc, char **argv)
 	printf("Cantidad de movimientos rrb: %d\n", counter.rrb);
 	printf("Cantidad de movimientos rrr: %d\n", counter.rrr);
 	ft_printf("Cantidad de movimientos total: %d\n", counter.total);
-	
 	free_and_print(stack_a, stack_b, data_parsed);
 }
 

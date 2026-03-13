@@ -8,7 +8,7 @@ double	ft_compute_disorder(t_stack *stack_a)
 	t_node	*second_node;
 
 	first_node = stack_a->top;
-	second_node = first_node->next;
+	//second_node = first_node->next;
 	mistakes = 0;
     total_pairs = 0;
 	while (first_node != NULL)
@@ -17,7 +17,7 @@ double	ft_compute_disorder(t_stack *stack_a)
 		while (second_node != NULL)
 		{
 			total_pairs++;
-			if(first_node->content > second_node->content)
+			if (first_node->content > second_node->content)
 				mistakes++;
 			second_node = second_node->next;
 		}

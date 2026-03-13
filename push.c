@@ -26,7 +26,7 @@ void	pa(t_stack *a, t_stack *b, t_counter *counter)
 		counter->pa++;
 		counter->total++;
 	}
-	write(1, "pb\n", 3);
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *a, t_stack *b, t_counter *counter)
