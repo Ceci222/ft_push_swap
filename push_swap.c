@@ -37,7 +37,7 @@ void	push_swap(int argc, char **argv)
 	printf("Cantidad de movimientos rra: %d\n", counter.rra);
 	printf("Cantidad de movimientos rrb: %d\n", counter.rrb);
 	printf("Cantidad de movimientos rrr: %d\n", counter.rrr);
-	printf("Cantidad de movimientos total: %d\n", counter.total);
+	ft_printf("Cantidad de movimientos total: %d\n", counter.total);
 	
 	free_and_print(stack_a, stack_b, data_parsed);
 }
