@@ -5,6 +5,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include "libft/libft.h"
+# include "ft_printf/ft_printf.h"
 
 typedef struct s_node
 {
@@ -67,6 +68,7 @@ void	sort_two(t_stack *stack, t_counter *counter);
 void	sort_three(t_stack *stack, t_counter *counter);
 void	sort_four(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
 void	sort_five(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
+void	ft_init_counter(t_counter *counter);
 int		is_right_number(char *str);
 int		is_duplicate(t_stack *stack, long num);
 int		ft_lstsize(t_node *lst);
@@ -76,6 +78,6 @@ t_node	*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *));
 t_node	*ft_create_node(long content);
 t_stack	*ft_fill_stack(char **arg);
 t_stack	*ft_create_stack(void);
-void	ft_init_counter(t_counter *counter);
+double	ft_compute_disorder(t_stack *stack_a);
 
 #endif
