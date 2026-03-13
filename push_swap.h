@@ -72,6 +72,7 @@ void	ft_init_counter(t_counter *counter);
 int		is_right_number(char *str);
 int		is_duplicate(t_stack *stack, long num);
 int		ft_lstsize(t_node *lst);
+int		find_min_pos(t_stack *stack_a);
 char	**ft_parser(int argc, char **argv);
 t_node	*ft_lstlast(t_node *lst);
 t_node	*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *));
