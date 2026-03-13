@@ -27,7 +27,10 @@ void	sa(t_stack *a, t_counter *counter)
 {
 	swap_one(a);
 	if(counter)
+	{
 		counter->sa++;
+		counter->total++;
+	}
 	write(1, "sa", 2);
 	write(1, "\n", 1);
 }
@@ -36,7 +39,10 @@ void	sb(t_stack *b, t_counter *counter)
 {
 	swap_one(b);
 	if(counter)
+	{
 		counter->sb++;
+		counter->total++;
+	}
 	write(1, "sb", 2);
 	write(1, "\n", 1);
 }
@@ -46,7 +52,10 @@ void	ss(t_stack *a, t_stack *b, t_counter *counter)
 	swap_one(a);
 	swap_one(b);
 	if(counter)
+	{
 		counter->ss++;
+		counter->total++;
+	}
 	write(1, "ss", 2);
 	write(1, "\n", 1);
 }

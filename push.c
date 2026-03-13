@@ -4,9 +4,7 @@ void	pa(t_stack *a, t_stack *b, t_counter *counter)
 {
 	t_node	*tmp;
 
-	if (!b || b->size == 0)
-		return ;
-	if (!a)
+	if (!a || !b || a->size == 0)
 		return ;
 	tmp = b->top;
 	b->top = tmp->next;
@@ -24,17 +22,18 @@ void	pa(t_stack *a, t_stack *b, t_counter *counter)
 	a->size++;
 	b->size--;
 	if (counter)
+	{
 		counter->pa++;
-	write(1, "pa", 2);
-	write(1, "\n", 1);
+		counter->total++;
+	}
+	write(1, "pb\n", 3);
 }
+
 void	pb(t_stack *a, t_stack *b, t_counter *counter)
 {
 	t_node	*tmp;
 
-	if (!a || a->size == 0)
-		return ;
-	if (!b)
+	if (!a || !b || a->size == 0)
 		return ;
 	tmp = a->top;
 	a->top = tmp->next;
@@ -52,7 +51,9 @@ void	pb(t_stack *a, t_stack *b, t_counter *counter)
 	a->size--;
 	b->size++;
 	if (counter)
+	{
 		counter->pb++;
-	write(1, "pb", 2);
-	write(1, "\n", 1);
+		counter->total++;
+	}
+	write(1, "pb\n", 3);
 }

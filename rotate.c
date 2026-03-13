@@ -9,11 +9,9 @@ void	rotate(t_stack *stack)
 		return ;
 	else if (stack->size == 2)
 		swap_one(stack);
-	
 	tmp_top = stack->top;
 	tmp_bottom = stack->bottom;
 	stack->bottom->next = tmp_top;
-
 	stack->bottom = tmp_top;
 	stack->top = stack->top->next;
 	tmp_top->next = NULL;
@@ -21,30 +19,39 @@ void	rotate(t_stack *stack)
 	stack->top->prev = NULL;
 }
 
-void	ra(t_stack *a, t_counter *count)
+void	ra(t_stack *a, t_counter *counter)
 {
 	rotate(a);
-	if(count)
-		count->ra++;
+	if(counter)
+	{
+		counter->ra++;
+		counter->total++;
+	}
 	write(1, "ra", 2);
 	write(1, "\n", 1);
 }
 
-void	rb(t_stack *b, t_counter *count)
+void	rb(t_stack *b, t_counter *counter)
 {
 	rotate(b);
-	if(count)
-		count->rb++;
+	if(counter)
+	{
+		counter->rb++;
+		counter->total++;
+	}
 	write(1, "rb", 2);
 	write(1, "\n", 1);
 }
 
-void	rr(t_stack *a, t_stack *b, t_counter *count)
+void	rr(t_stack *a, t_stack *b, t_counter *counter)
 {
 	rotate(a);
 	rotate(b);
-	if(count)
-		count->rr++;
+	if(counter)
+	{
+		counter->rr++;
+		counter->total++;
+	}
 	write(1, "rr", 2);
 	write(1, "\n", 1);
 }

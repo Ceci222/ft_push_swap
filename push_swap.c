@@ -7,7 +7,7 @@ void	push_swap(int argc, char **argv)
 	char	**data_parsed;
 	t_counter	counter;
 
-	ft_create_counter(&counter);
+	ft_init_counter(&counter);
 	stack_b = ft_create_stack();
 	data_parsed = ft_parser(argc, argv);
 	stack_a = ft_fill_stack(data_parsed);
@@ -37,6 +37,7 @@ void	push_swap(int argc, char **argv)
 	printf("Cantidad de movimientos rra: %d\n", counter.rra);
 	printf("Cantidad de movimientos rrb: %d\n", counter.rrb);
 	printf("Cantidad de movimientos rrr: %d\n", counter.rrr);
+	printf("Cantidad de movimientos total: %d\n", counter.total);
 	
 	free_and_print(stack_a, stack_b, data_parsed);
 }

@@ -33,6 +33,7 @@ typedef struct s_counter
 	int	rra;
 	int	rrb;
 	int	rrr;
+	int	total;
 }			t_counter;
 
 void	ft_print_stack(t_stack *stack);
@@ -75,6 +76,6 @@ t_node	*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *));
 t_node	*ft_create_node(long content);
 t_stack	*ft_fill_stack(char **arg);
 t_stack	*ft_create_stack(void);
-void ft_create_counter(t_counter *counter);
+void	ft_init_counter(t_counter *counter);
 
 #endif

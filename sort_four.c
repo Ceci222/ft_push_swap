@@ -26,7 +26,5 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 	if (fourth < third && fourth < second && fourth < first)
 		rra(stack_a, counter);
 	pb(stack_a, stack_b, counter);
-	sort_three(stack_a, counter);
-	pa(stack_a, stack_b, counter);
-	return ;
+	return (sort_three(stack_a, counter), pa(stack_a, stack_b, counter));
 }
