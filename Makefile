@@ -17,7 +17,8 @@ LIBS = -lft -lftprintf
 DIR = srcs/
 
 SRCS = push_swap.c push_swap_utils.c ft_errors_frees.c ft_stacks_nodes.c ps_parser.c push.c \
-swap.c rotate.c reverse_rotate.c sort_two.c sort_three.c sort_four.c sort_five.c counter_initializer.c
+swap.c rotate.c reverse_rotate.c sort_two.c sort_three.c sort_four.c sort_five.c counter_initializer.c\
+compute_disorder.c
 OBJS = $(SRCS:.c=.o)
 
 CC = cc

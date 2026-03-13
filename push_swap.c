@@ -11,6 +11,7 @@ void	push_swap(int argc, char **argv)
 	stack_b = ft_create_stack();
 	data_parsed = ft_parser(argc, argv);
 	stack_a = ft_fill_stack(data_parsed);
+	printf("Disorder: %.2f\n", ft_compute_disorder(stack_a));
 	if (!stack_a || !stack_b)
 	{
 		ft_free_stack(stack_b);
