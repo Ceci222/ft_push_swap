@@ -28,6 +28,8 @@ void	push_swap(int argc, char **argv)
 		sort_four(stack_a, stack_b, &counter);
 	if (stack_a->size == 5)
 		sort_five(stack_a, stack_b, &counter);
+	if (stack_a->size > 5)
+		sort_simple(stack_a, stack_b, &counter);
 	printf("Cantidad de movimientos sa: %d\n", counter.sa);
 	printf("Cantidad de movimientos sb: %d\n", counter.sb);
 	printf("Cantidad de movimientos ss: %d\n", counter.ss);
