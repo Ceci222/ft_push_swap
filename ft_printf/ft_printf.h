@@ -6,7 +6,7 @@
 /*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 11:52:23 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/02/17 11:55:24 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:36:48 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int	ft_puthex_int(unsigned long long n, char *base);
 int	ft_put_ptr(void *ptr, char *base);
 int	ft_putchar_int(char c);
 int	ft_putstr_int(char *s);
+int	ft_putdouble(double num, int dec);
+
 
 #endif

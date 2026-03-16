@@ -18,7 +18,7 @@ void	push_swap(int argc, char **argv)
 		ft_free_char(data_parsed);
 		return ;
 	}
-	printf("Disorder: %.2f\n", ft_compute_disorder(stack_a));
+	ft_printf("Disorder: %.\n", ft_compute_disorder(stack_a));
 	printf("posicion del minimo: %d\n", find_min_pos(stack_a));
 	if (stack_a->size == 2)
 		sort_two(stack_a, &counter);
