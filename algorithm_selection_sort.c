@@ -29,8 +29,6 @@ int	find_min_pos(t_stack *stack_a)
 	return (current_min_num_position);
 }
 
-#include "push_swap.h"
-
 int	find_min_num(t_stack *stack_a)
 {
 	int		min;

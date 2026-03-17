@@ -70,6 +70,8 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
 void	sort_five(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
 void	ft_init_counter(t_counter *counter);
 void	sort_simple(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
+void	final_order_and_push(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
+void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
 int		is_right_number(char *str);
 int		is_duplicate(t_stack *stack, long num);
 int		ft_lstsize(t_node *lst);

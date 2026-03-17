@@ -20,7 +20,7 @@ void	push_swap(int argc, char **argv)
 	}
 	ft_printf("Disorder: %.\n", ft_compute_disorder(stack_a));
 	printf("posicion del minimo: %d\n", find_min_pos(stack_a));
-	if (stack_a->size == 2)
+/* 	if (stack_a->size == 2)
 		sort_two(stack_a, &counter);
  	if (stack_a->size == 3)
 		sort_three(stack_a, &counter);
@@ -28,8 +28,9 @@ void	push_swap(int argc, char **argv)
 		sort_four(stack_a, stack_b, &counter);
 	if (stack_a->size == 5)
 		sort_five(stack_a, stack_b, &counter);
-	if (stack_a->size > 5)
-		sort_simple(stack_a, stack_b, &counter);
+	if (stack_a->size > 5) */
+		//sort_simple(stack_a, stack_b, &counter);
+		//sort_chunks(stack_a, stack_b, &counter);
 	printf("Cantidad de movimientos sa: %d\n", counter.sa);
 	printf("Cantidad de movimientos sb: %d\n", counter.sb);
 	printf("Cantidad de movimientos ss: %d\n", counter.ss);
