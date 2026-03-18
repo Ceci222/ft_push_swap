@@ -1,69 +1,18 @@
 #include "push_swap.h"
-/* 
-int	find_min_pos(t_stack *stack_a)
-{
-	int		index;
-	int		current_min_num_position;
-	t_node	*current;
-	int		node_content;
-
-	if (!stack_a || !stack_a->top)
-		return (-1);
-
-	index = 0;
-	current_min_num_position = 0;
-	current = stack_a->top;
-	node_content = stack_a->top->content;
-
-	while (current != NULL)
-	{
-		if (current->content < node_content)
-		{
-			node_content = current->content;
-			current_min_num_position = index;
-		}
-		index++;
-
-		current= current->next;
-	}
-	return (current_min_num_position);
-}
-
-int	find_min_num(t_stack *stack_a)
-{
-	int		min;
-	t_node	*current;
-
-	if (!stack_a || !stack_a->top)
-		return (-1);
-
-	current = stack_a->top;
-	min = stack_a->top->content;
-
-	while (current != NULL)
-	{
-		if (current->content < min)
-			min = current->content;
-		current= current->next;
-	}
-	return (min);
-} */
 
 static	int	find_max_pos(t_stack *stack_a)
 {
 	int		index;
 	int		current_max_num_position;//position of current max num
-	t_node	*current;
 	int		node_content;
+	t_node	*current;
 
 	if (!stack_a || !stack_a->top)
 		return (-1);
-
 	index = 0;
 	current_max_num_position = 0;
 	current = stack_a->top;
 	node_content = stack_a->top->content;
-
 	while (current != NULL)
 	{
 		if (current->content > node_content)
@@ -72,7 +21,6 @@ static	int	find_max_pos(t_stack *stack_a)
 			current_max_num_position = index;
 		}
 		index++;
-
 		current= current->next;
 	}
 	return (current_max_num_position);
@@ -119,7 +67,7 @@ void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 	int	min_in_chunk;
 	int	max_in_chunk;
 	int min_value;
-	int	range;
+	long	range;
 	int	num_of_chunks;
 	int	checked_items;
 
@@ -162,17 +110,17 @@ void	final_order_and_push(t_stack *stack_a, t_stack *stack_b, t_counter *counter
 	while (stack_b->size != 0)
 	{
 		max_pos = find_max_pos(stack_b);
-    	max_val = find_max_num(stack_b);
-		if (max_pos <= stack_b->size/2)
-        {
-            while (stack_b->top->content != max_val)
-                rb(stack_b, counter);
-        }
-        else
-        {
-            while (stack_b->top->content != max_val)
-                rrb(stack_b, counter);
-        }
+		max_val = find_max_num(stack_b);
+		if (max_pos <= stack_b-> size/2)
+		{
+			while (stack_b->top->content != max_val)
+				rb(stack_b, counter);
+		}
+		else
+		{
+			while (stack_b->top->content != max_val)
+				rrb(stack_b, counter);
+		}
 		pa(stack_a, stack_b, counter);
 	}
 }

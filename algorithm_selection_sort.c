@@ -72,5 +72,3 @@ void	sort_simple(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 	while (stack_b->top != NULL)
 		pa(stack_a, stack_b, counter);
 }
-
-
