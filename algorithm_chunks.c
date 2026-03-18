@@ -26,7 +26,7 @@ static	int	find_max_pos(t_stack *stack_a)
 	return (current_max_num_position);
 }
 
-static	int	find_max_num(t_stack *stack_a)
+int	find_max_num(t_stack *stack_a)
 {
 	int		max;
 	t_node	*current;

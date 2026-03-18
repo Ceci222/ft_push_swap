@@ -77,6 +77,8 @@ int		is_duplicate(t_stack *stack, long num);
 int		ft_lstsize(t_node *lst);
 int		find_min_pos(t_stack *stack_a);
 int		find_min_num(t_stack *stack_a);
+int		find_max_num(t_stack *stack_a);
+//int		find_pos(t_stack *stack_a, t_node *node);
 char	**ft_parser(int argc, char **argv);
 t_node	*ft_lstlast(t_node *lst);
 t_node	*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *));
@@ -84,5 +86,6 @@ t_node	*ft_create_node(long content);
 t_stack	*ft_fill_stack(char **arg);
 t_stack	*ft_create_stack(void);
 double	ft_compute_disorder(t_stack *stack_a);
+void	sort_turk(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
 
 #endif
