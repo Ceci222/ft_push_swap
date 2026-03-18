@@ -1,19 +1,19 @@
 #include "push_swap.h"
 
-static	void base_move(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
+static	void	base_move(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 {
 	pb(stack_a, stack_b, counter);
 	sort_four(stack_a, stack_b, counter);
 	pa(stack_a, stack_b, counter);
 }
 
-static	void base_ra(t_stack *stack_a, t_counter *counter)
+static	void	base_ra(t_stack *stack_a, t_counter *counter)
 {
 	ra(stack_a, counter);
 	ra(stack_a, counter);
 }
 
-static	void base_rra(t_stack *stack_a, t_counter *counter)
+static	void	base_rra(t_stack *stack_a, t_counter *counter)
 {
 	rra(stack_a, counter);
 	rra(stack_a, counter);
