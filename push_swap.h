@@ -78,6 +78,7 @@ int		ft_lstsize(t_node *lst);
 int		find_min_pos(t_stack *stack_a);
 int		find_min_num(t_stack *stack_a);
 int		find_max_num(t_stack *stack_a);
+int		is_ordered(t_stack *stack_a);
 //int		find_pos(t_stack *stack_a, t_node *node);
 char	**ft_parser(int argc, char **argv);
 t_node	*ft_lstlast(t_node *lst);

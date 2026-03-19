@@ -20,6 +20,11 @@ void	push_swap(int argc, char **argv)
 	}
 	ft_printf("Disorder: %.\n", ft_compute_disorder(stack_a));
 	ft_printf("posicion del minimo: %d\n", find_min_pos(stack_a));
+	if (is_ordered(stack_a))
+	{
+		ft_printf("Ordered\n");
+		return ;
+	}
 /*  	if (stack_a->size == 2)
 		sort_two(stack_a, &counter);
  	else if (stack_a->size == 3)
