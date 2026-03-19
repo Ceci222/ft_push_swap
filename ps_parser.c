@@ -18,6 +18,11 @@ char	**ft_parser(int argc, char **argv)
 	{
 		while (i < argc)
 		{
+			if (ft_strncmp(argv[i], "--", 2) == 0)
+			{
+				i++;
+				continue ;
+			}
 			temp = ft_strjoin(full_string, " ");
 			free(full_string);
 			full_string = ft_strjoin(temp, argv[i]);

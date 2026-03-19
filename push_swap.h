@@ -1,5 +1,10 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+//Once it finds STRATEGY_SIMPLE in the code it replaces it with "Simple / O(n^2)"
+#define STRATEGY_SIMPLE "Simple / O(n^2)"
+#define STRATEGY_MEDIUM "Medium / O(n*sqrt(n))"
+#define STRATEGY_COMPLEX "Complex / O(n log n)"
+#define STRATEGY_ADAPTIVE "Adaptive"
 
 # include <unistd.h>
 # include <stdarg.h>
@@ -71,9 +76,12 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
 void	ft_init_counter(t_counter *counter);
 void	sort_simple(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
 void	final_order_and_push(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
+void    ft_print_benchmark(t_counter *counter, double disorder, char *strategy);
 void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
+void	sort_adaptive(t_stack *stack_a, t_stack *stack_b, t_counter *counter, float disorder);
 int		is_right_number(char *str);
 int		is_duplicate(t_stack *stack, long num);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_lstsize(t_node *lst);
 int		find_min_pos(t_stack *stack_a);
 int		find_min_num(t_stack *stack_a);
