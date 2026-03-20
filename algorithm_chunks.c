@@ -59,7 +59,49 @@ static	int	ft_sqrt(int	size)
 	}
 	return (i);
 }
+/*void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
+{
+	int i;
+	int size;
+	int	min_in_chunk;
+	int	max_in_chunk;
+	int min_value;
+	long	range;
+	int	num_of_chunks;
+	int	checked_items;
 
+	i = 0;
+	min_value = find_min_num(stack_a);
+	size = stack_a->size;
+	range = find_max_num(stack_a) - find_min_num(stack_a);
+	num_of_chunks = ft_sqrt(size);
+
+	while (i < num_of_chunks)
+	{
+		if (!stack_a->top) break;
+		min_in_chunk =  min_value + i * range / num_of_chunks;
+		max_in_chunk =  min_value + (i + 1) * range / num_of_chunks;//aqui pusimos max_value :S. Nos e usaba, lo borré
+		if (i == num_of_chunks - 1)
+    		max_in_chunk = find_max_num(stack_a);
+		checked_items = 0;
+		size = stack_a->size;
+		while (checked_items < size) //aqui usabamos stack_a->size pero como decrecia en cada pb daba error :S
+		{
+			if (!stack_a->top)
+        		break ; //si se vacia el stack (ej, estan ordenados los del chunk) da segmentation fault
+			if (stack_a->top->content >= min_in_chunk 
+				&& stack_a->top->content <= max_in_chunk)
+				pb(stack_a, stack_b, counter);
+			else
+				ra(stack_a, counter);
+			checked_items++;
+		}
+		i++;
+	}
+	//while (stack_a->size > 0)//no se vaciaba completamente por el redondeo, entonces mientras haya algo que lo pase a b
+	// 	pb(stack_a, stack_b, counter);
+	//final_order_and_push(stack_a, stack_b, counter); 
+} */
 void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 {
 	int i;
