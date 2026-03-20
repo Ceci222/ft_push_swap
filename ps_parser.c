@@ -57,12 +57,15 @@ static void	convert (char *arg, t_stack *stack_a)
 	free(number_node);
 }
 
+
 t_stack	*ft_fill_stack(char **arg)
 {
 	int		i;
 	t_stack	*stack_a;
 
 	stack_a = ft_create_stack();
+	if (!arg || !arg[0])
+		return (ft_free_stack(stack_a), NULL);
 	i = 0;
 	 if (read_flags(arg[i]) == 1)
 		i++;

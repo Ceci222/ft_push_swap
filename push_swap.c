@@ -11,13 +11,14 @@ void	push_swap(int argc, char **argv)
 	int 		i;
 	float		disorder;
 
-	/* ft_strategy_checker() */
+	//ft_strategy_checker()
+	disorder = 0;
 	strategy = NULL;
 	bench = 0;
 	i = 0;
-	disorder = 0;
 	
-	while (i < argc)
+	
+	 while (i < argc)
 	{
 		if (ft_strncmp(argv[i], "--bench", 7) == 0)
 			bench = 1;
@@ -31,7 +32,6 @@ void	push_swap(int argc, char **argv)
 			strategy = STRATEGY_ADAPTIVE;
 		i++;
 	}
-
 	ft_init_counter(&counter);
 	if (!strategy)
     	strategy = STRATEGY_ADAPTIVE;
