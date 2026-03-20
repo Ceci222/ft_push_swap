@@ -36,7 +36,7 @@ void	push_swap(int argc, char **argv)
 	if (!strategy)
     	strategy = STRATEGY_ADAPTIVE;
 	stack_b = ft_create_stack();
-	data_parsed = ft_parser(argc, argv);
+	data_parsed = ft_parser(argc, argv, 1);
 	stack_a = ft_fill_stack(data_parsed);
 	if (!stack_a || !stack_b)
 	{
@@ -45,10 +45,11 @@ void	push_swap(int argc, char **argv)
 		ft_free_char(data_parsed);
 		return ;
 	}
-/* 	ft_printf("Disorder: %.\n", ft_compute_disorder(stack_a));
-	ft_printf("posicion del minimo: %d\n", find_min_pos(stack_a)); */
 	if (is_ordered(stack_a))
 	{
+		ft_free_stack(stack_a);
+		ft_free_stack(stack_b);
+		ft_free_char(data_parsed);
 		return ;
 	}
 	disorder = ft_compute_disorder(stack_a);
@@ -72,22 +73,9 @@ void	push_swap(int argc, char **argv)
 			sort_adaptive(stack_a, stack_b, &counter, disorder);
 
 	} 
-		//
-/* 	printf("Cantidad de movimientos sa: %d\n", counter.sa);
-	printf("Cantidad de movimientos sb: %d\n", counter.sb);
-	printf("Cantidad de movimientos ss: %d\n", counter.ss);
-	printf("Cantidad de movimientos pb: %d\n", counter.pb);
-	printf("Cantidad de movimientos pa: %d\n", counter.pa);
-	printf("Cantidad de movimientos ra: %d\n", counter.ra);
-	printf("Cantidad de movimientos rb: %d\n", counter.rb);
-	printf("Cantidad de movimientos rr: %d\n", counter.rr);
-	printf("Cantidad de movimientos rra: %d\n", counter.rra);
-	printf("Cantidad de movimientos rrb: %d\n", counter.rrb);
-	printf("Cantidad de movimientos rrr: %d\n", counter.rrr);
-	ft_printf("Cantidad de movimientos total: %d\n", counter.total); */
 	if (bench == 1)
 		ft_print_benchmark(&counter, disorder, strategy);
-	free_and_print(stack_a, stack_b, data_parsed); 
+	free_stack_and_char(stack_a, stack_b, data_parsed); 
 }
 
 int	main(int argc, char **argv)
