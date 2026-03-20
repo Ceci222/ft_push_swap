@@ -1,5 +1,19 @@
 #include "push_swap.h"
 
+static int read_flags(char *argv)
+{
+	if (ft_strcmp(argv, "--bench") == 0)
+		return (1); 
+	else if (ft_strcmp(argv, "--simple") == 0)
+		return (2);
+	else if (ft_strcmp(argv, "--medium") == 0)
+		return (2);
+	else if (ft_strcmp(argv, "--complex") == 0)
+		return (2);
+	else if (ft_strcmp(argv, "--adaptive") == 0)
+		return (2);
+	return (0);
+}
 char	**ft_parser(int argc, char **argv)
 {
 	int		i;
@@ -8,17 +22,14 @@ char	**ft_parser(int argc, char **argv)
 	char	*full_string;
 
 	i = 1;
-	full_string = ft_strdup("");
 	if (argc == 2)
-	{
-		free(full_string);
 		full_string = ft_strdup(argv[i]);
-	}
-	else if (argc > 2)
+	else
 	{
+		full_string = ft_strdup("");
 		while (i < argc)
 		{
-			if (ft_strncmp(argv[i], "--", 2) == 0)
+			if (read_flags(argv[i]) == 1)
 			{
 				i++;
 				continue ;
@@ -43,6 +54,12 @@ t_stack	*ft_fill_stack(char **arg)
 
 	stack_a = ft_create_stack();
 	i = 0;
+	if (read_flags(arg[i]) == 1)
+		i++;
+	else if (read_flags(arg[i]) == 2)
+		i++;
+	if (!arg[i])
+		return (ft_free_stack(stack_a), NULL);
 	while (arg[i])
 	{
 		if (is_right_number(arg[i]))
