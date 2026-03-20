@@ -59,7 +59,7 @@ static	int	ft_sqrt(int	size)
 	}
 	return (i);
 }
-/*void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
+void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 {
 	int i;
 	int size;
@@ -80,15 +80,15 @@ static	int	ft_sqrt(int	size)
 	{
 		if (!stack_a->top) break;
 		min_in_chunk =  min_value + i * range / num_of_chunks;
-		max_in_chunk =  min_value + (i + 1) * range / num_of_chunks;//aqui pusimos max_value :S. Nos e usaba, lo borré
+		max_in_chunk =  min_value + (i + 1) * range / num_of_chunks;
 		if (i == num_of_chunks - 1)
     		max_in_chunk = find_max_num(stack_a);
 		checked_items = 0;
 		size = stack_a->size;
-		while (checked_items < size) //aqui usabamos stack_a->size pero como decrecia en cada pb daba error :S
+		while (checked_items < size)
 		{
 			if (!stack_a->top)
-        		break ; //si se vacia el stack (ej, estan ordenados los del chunk) da segmentation fault
+        		break ;
 			if (stack_a->top->content >= min_in_chunk 
 				&& stack_a->top->content <= max_in_chunk)
 				pb(stack_a, stack_b, counter);
@@ -98,11 +98,9 @@ static	int	ft_sqrt(int	size)
 		}
 		i++;
 	}
-	//while (stack_a->size > 0)//no se vaciaba completamente por el redondeo, entonces mientras haya algo que lo pase a b
-	// 	pb(stack_a, stack_b, counter);
-	//final_order_and_push(stack_a, stack_b, counter); 
-} */
-void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
+} 
+
+/* void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 {
 	int i;
 	int size;
@@ -141,9 +139,9 @@ void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 	while (stack_a->size > 0)//no se vaciaba completamente por el redondeo, entonces mientras haya algo que lo pase a b
 		pb(stack_a, stack_b, counter);
 	final_order_and_push(stack_a, stack_b, counter);
-}
+} */
 
-void	final_order_and_push(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
+/* void	final_order_and_push(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 {
 
 	int	max_pos;
@@ -165,4 +163,4 @@ void	final_order_and_push(t_stack *stack_a, t_stack *stack_b, t_counter *counter
 		}
 		pa(stack_a, stack_b, counter);
 	}
-}
+} */
