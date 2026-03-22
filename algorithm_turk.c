@@ -20,6 +20,7 @@ static int	find_pos(t_stack *stack_a, t_node *node)
 	}
 	return (-1);
 }
+
 static	t_node	*find_max_node(t_stack *stack_b)
 {
 	int	max;
@@ -44,6 +45,7 @@ static	t_node	*find_max_node(t_stack *stack_b)
 	}
 	return (wanted);
 }
+
 static	t_node	*find_min_node(t_stack *stack)
 {
 	int	min;
@@ -91,8 +93,6 @@ static t_node *find_target_in_b(t_stack *stack_b, int value) //busca el nodo enc
 	return (target);
 }
 
-
-
 static	int	calculate_cost(t_stack *stack, t_node *node)
 {
 	int pos;
@@ -132,20 +132,9 @@ static	int	total_cost(t_stack *stack_a, t_stack *stack_b, t_node *node, t_node *
 	else
 		return (cost_a + cost_b);
 }
-//recibe el nodo mas barato de mover
-static void	execute_move(t_stack *stack_a, t_stack *stack_b, t_node *node, t_node *target,t_counter *counter)
+
+void	ft_r_or_rr_moves(t_stack *stack_a, t_stack *stack_b, t_node *node, t_node *target,t_counter *counter)
 {
-	if (!stack_a || !stack_b || !node || !target)
-		return ;
-	while (stack_a->top != node && stack_b->top != target)
-	{
-		if(find_pos(stack_a, node) <= stack_a->size / 2 && find_pos(stack_b, target) <= stack_b->size / 2)
-			rr(stack_a, stack_b, counter);
-		else if (find_pos(stack_a, node) > stack_a->size / 2 && find_pos(stack_b, target) > stack_b->size / 2)
-			rrr(stack_a, stack_b, counter);
-		else
-			break;
-	}
 	while (stack_a->top != node) 
 	{
 		if(find_pos(stack_a, node) <= stack_a->size / 2)
@@ -160,6 +149,37 @@ static void	execute_move(t_stack *stack_a, t_stack *stack_b, t_node *node, t_nod
 		else
 			rrb(stack_b, counter);
 	}
+}	
+	
+//recibe el nodo mas barato de mover
+static void	execute_move(t_stack *stack_a, t_stack *stack_b, t_node *node, t_node *target,t_counter *counter)
+{
+	if (!stack_a || !stack_b || !node || !target)
+		return ;
+	while (stack_a->top != node && stack_b->top != target)
+	{
+		if(find_pos(stack_a, node) <= stack_a->size / 2 && find_pos(stack_b, target) <= stack_b->size / 2)
+			rr(stack_a, stack_b, counter);
+		else if (find_pos(stack_a, node) > stack_a->size / 2 && find_pos(stack_b, target) > stack_b->size / 2)
+			rrr(stack_a, stack_b, counter);
+		else
+			break;
+	}
+	ft_r_or_rr_moves(stack_a, stack_b, node, target, counter);
+/* 	while (stack_a->top != node) 
+	{
+		if(find_pos(stack_a, node) <= stack_a->size / 2)
+			ra(stack_a, counter);
+		else
+			rra(stack_a, counter);
+	}
+	while (stack_b->top != target) 
+	{
+		if(find_pos(stack_b, target) <= stack_b->size / 2)
+			rb(stack_b, counter);
+		else
+			rrb(stack_b, counter);
+	} */
 	pb(stack_a, stack_b, counter);
 }
 
@@ -188,6 +208,22 @@ static t_node *find_cheapest(t_stack *stack_a, t_stack *stack_b)
 	}
 	return (cheapest);
 }
+
+static void	push_max_to_a(t_stack *stack_b, t_stack *stack_a, t_counter *counter)
+{
+	while (stack_b->size > 0)
+	{
+		while (stack_b->top != find_max_node(stack_b))
+		{
+			if (find_pos(stack_b, find_max_node(stack_b)) <= stack_b->size / 2)
+				rb(stack_b, counter);
+			else
+				rrb(stack_b, counter);
+		}
+		pa(stack_a, stack_b, counter);
+	}
+}
+
 void	sort_turk(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 {
 	t_node *cheapest;
@@ -203,7 +239,8 @@ void	sort_turk(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 		target = find_target_in_b(stack_b, cheapest->content);
 		execute_move(stack_a, stack_b, cheapest, target, counter);
 	}
-	while (stack_b->size > 0)
+	push_max_to_a(stack_b, stack_a, counter);
+/* 	while (stack_b->size > 0)
 	{
 		while (stack_b->top != find_max_node(stack_b))
 		{
@@ -213,7 +250,7 @@ void	sort_turk(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 				rrb(stack_b, counter);
 		}
 		pa(stack_a, stack_b, counter);
-	}
+	} */
 }
 
 

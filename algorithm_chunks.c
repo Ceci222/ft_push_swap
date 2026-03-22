@@ -59,6 +59,31 @@ static	int	ft_sqrt(int	size)
 	}
 	return (i);
 }
+
+static void	ft_pb_or_ra(t_stack *stack_a, t_stack *stack_b,  t_counter *counter, int size, int min_in_chunk, int max_in_chunk, int checked_items)
+{
+	while (checked_items < size)
+	{
+		if (!stack_a->top)
+			break ;
+		if (stack_a->top->content >= min_in_chunk 
+			&& stack_a->top->content <= max_in_chunk)
+			pb(stack_a, stack_b, counter);
+		else
+			ra(stack_a, counter);
+		checked_items++;
+	}
+}
+
+static void	ft_initialize_variables(t_stack *stack_a, int *i, int *size, int *min_value, long *range, int *num_of_chunks)
+{
+	*i = 0;
+	*min_value = find_min_num(stack_a);
+	*size = stack_a->size;
+	*range = find_max_num(stack_a) - find_min_num(stack_a);
+	*num_of_chunks = ft_sqrt(*size);
+}
+
 void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 {
 	int i;
@@ -70,11 +95,12 @@ void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 	int	num_of_chunks;
 	int	checked_items;
 
-	i = 0;
+	ft_initialize_variables(stack_a, &i, &size, &min_value, &range, &num_of_chunks);
+/* 	i = 0;
 	min_value = find_min_num(stack_a);
 	size = stack_a->size;
 	range = find_max_num(stack_a) - find_min_num(stack_a);
-	num_of_chunks = ft_sqrt(size);
+	num_of_chunks = ft_sqrt(size); */
 
 	while (i < num_of_chunks)
 	{
@@ -85,7 +111,8 @@ void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
     		max_in_chunk = find_max_num(stack_a);
 		checked_items = 0;
 		size = stack_a->size;
-		while (checked_items < size)
+		ft_pb_or_ra( stack_a, stack_b, counter, size, min_in_chunk, max_in_chunk, checked_items);
+/* 		while (checked_items < size)
 		{
 			if (!stack_a->top)
         		break ;
@@ -95,7 +122,7 @@ void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 			else
 				ra(stack_a, counter);
 			checked_items++;
-		}
+		} */
 		i++;
 	}
 } 
