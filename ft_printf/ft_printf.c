@@ -6,7 +6,7 @@
 /*   By: lajen-li <lajen-li@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 11:58:26 by lajen-li          #+#    #+#             */
-/*   Updated: 2026/03/16 13:37:41 by lajen-li         ###   ########.fr       */
+/*   Updated: 2026/03/23 19:05:38 by lajen-li         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ int	ft_check(char spec, va_list l_arg)
 		count += ft_puthex_int(va_arg(l_arg, unsigned int), "0123456789ABCDEF");
 	else if (spec == 'p')
 		count += ft_put_ptr(va_arg(l_arg, void *), "0123456789abcdef");
-	else if (spec == '.')
-		count += ft_putdouble(va_arg(l_arg, double), 2);
 	else if (spec == '%')
 		count += ft_putchar_int('%');
 	return (count);

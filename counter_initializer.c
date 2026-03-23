@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void ft_init_counter(t_counter *counter)
+void	ft_init_counter(t_counter *counter)
 {
 	counter -> pa = 0;
 	counter -> pb = 0;

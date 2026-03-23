@@ -1,52 +1,6 @@
 #include "push_swap.h"
 
-static	int	find_max_pos(t_stack *stack_a)
-{
-	int		index;
-	int		current_max_num_position;//position of current max num
-	int		node_content;
-	t_node	*current;
-
-	if (!stack_a || !stack_a->top)
-		return (-1);
-	index = 0;
-	current_max_num_position = 0;
-	current = stack_a->top;
-	node_content = stack_a->top->content;
-	while (current != NULL)
-	{
-		if (current->content > node_content)
-		{
-			node_content = current->content;
-			current_max_num_position = index;
-		}
-		index++;
-		current= current->next;
-	}
-	return (current_max_num_position);
-}
-
-int	find_max_num(t_stack *stack_a)
-{
-	int		max;
-	t_node	*current;
-
-	if (!stack_a || !stack_a->top)
-		return (-1);
-
-	current = stack_a->top;
-	max = stack_a->top->content;
-
-	while (current != NULL)
-	{
-		if (current->content > max)
-			max = current->content;
-		current= current->next;
-	}
-	return (max);
-}
-
-static	int	ft_sqrt(int	size)
+static int	ft_sqrt(int size)
 {
 	int	i;
 
@@ -60,137 +14,76 @@ static	int	ft_sqrt(int	size)
 	return (i);
 }
 
-static void	ft_pb_or_ra(t_stack *stack_a, t_stack *stack_b,  t_counter *counter, int size, int min_in_chunk, int max_in_chunk, int checked_items)
+static void	pb_or_ra(t_stack *a, t_stack *b, t_counter *count, t_range *range)
 {
+	int	size;
+	int	checked_items;
+
+	size = a->size;
+	checked_items = 0;
 	while (checked_items < size)
 	{
-		if (!stack_a->top)
+		if (!a->top)
 			break ;
-		if (stack_a->top->content >= min_in_chunk 
-			&& stack_a->top->content <= max_in_chunk)
-			pb(stack_a, stack_b, counter);
+		if (a->top->content >= range->min_in_chunk
+			&& a->top->content <= range->max_in_chunk)
+			pb(a, b, count);
 		else
-			ra(stack_a, counter);
+			ra(a, count);
 		checked_items++;
 	}
 }
 
-void	final_order_and_push(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
+void	final_order_and_push(t_stack *a, t_stack *b, t_counter *count)
 {
-
 	int	max_pos;
-	int	max_val; //la declarabamos arriba pero la usabamos aquí :S
+	int	max_val;
 
-	while (stack_b->size != 0)
+	while (b->size != 0)
 	{
-		max_pos = find_max_pos(stack_b);
-		max_val = find_max_num(stack_b);
-		if (max_pos <= stack_b-> size/2)
+		max_pos = find_max_pos(b);
+		max_val = find_max_num(b);
+		if (max_pos <= b-> size / 2)
 		{
-			while (stack_b->top->content != max_val)
-				rb(stack_b, counter);
+			while (b->top->content != max_val)
+				rb(b, count);
 		}
 		else
 		{
-			while (stack_b->top->content != max_val)
-				rrb(stack_b, counter);
+			while (b->top->content != max_val)
+				rrb(b, count);
 		}
-		pa(stack_a, stack_b, counter);
+		pa(a, b, count);
 	}
 }
 
-static void	ft_initialize_variables(t_stack *stack_a, int *i, int *size, int *min_value, long *range, int *num_of_chunks)
+static void	init_vars(t_stack *a, int *min_val, long *range, int *chunks_num)
 {
-	*i = 0;
-	*min_value = find_min_num(stack_a);
-	*size = stack_a->size;
-	*range = find_max_num(stack_a) - find_min_num(stack_a);
-	*num_of_chunks = ft_sqrt(*size);
+	*min_val = find_min_num(a);
+	*range = find_max_num(a) - find_min_num(a);
+	*chunks_num = ft_sqrt(a->size);
 }
 
 void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 {
-	int i;
-	int size;
-	int	min_in_chunk;
-	int	max_in_chunk;
-	int min_value;
-	long	range;
-	int	num_of_chunks;
-	int	checked_items;
-
-	ft_initialize_variables(stack_a, &i, &size, &min_value, &range, &num_of_chunks);
-/* 	i = 0;
-	min_value = find_min_num(stack_a);
-	size = stack_a->size;
-	range = find_max_num(stack_a) - find_min_num(stack_a);
-	num_of_chunks = ft_sqrt(size); */
-
-	while (i < num_of_chunks)
-	{
-		if (!stack_a->top) break;
-		min_in_chunk =  min_value + i * range / num_of_chunks;
-		max_in_chunk =  min_value + (i + 1) * range / num_of_chunks;
-		if (i == num_of_chunks - 1)
-    		max_in_chunk = find_max_num(stack_a);
-		checked_items = 0;
-		size = stack_a->size;
-		ft_pb_or_ra( stack_a, stack_b, counter, size, min_in_chunk, max_in_chunk, checked_items);
-/* 		while (checked_items < size)
-		{
-			if (!stack_a->top)
-        		break ;
-			if (stack_a->top->content >= min_in_chunk 
-				&& stack_a->top->content <= max_in_chunk)
-				pb(stack_a, stack_b, counter);
-			else
-				ra(stack_a, counter);
-			checked_items++;
-		} */
-		i++;
-	}
-	final_order_and_push(stack_a, stack_b, counter);
-} 
-
-/* void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
-{
-	int i;
-	int size;
-	int	min_in_chunk;
-	int	max_in_chunk;
-	int min_value;
-	long	range;
-	int	num_of_chunks;
-	int	checked_items;
+	int		i;
+	int		min_value;
+	long	range_of_chunk;
+	int		num_of_chunks;
+	t_range	r;
 
 	i = 0;
-	min_value = find_min_num(stack_a);
-	size = stack_a->size;
-	range = find_max_num(stack_a) - find_min_num(stack_a);
-	num_of_chunks = ft_sqrt(size);
-
+	init_vars(stack_a, &min_value, &range_of_chunk, &num_of_chunks);
 	while (i < num_of_chunks)
 	{
-		min_in_chunk =  min_value + i * range / num_of_chunks;
-		max_in_chunk =  min_value + (i + 1) * range / num_of_chunks;//aqui pusimos max_value :S. Nos e usaba, lo borré
-		checked_items = 0;
-		size = stack_a->size;
-		while (checked_items < size) //aqui usabamos stack_a->size pero como decrecia en cada pb daba error :S
-		{
-			if (!stack_a->top)
-        		break ; //si se vacia el stack (ej, estan ordenados los del chunk) da segmentation fault
-			if (stack_a->top->content >= min_in_chunk 
-				&& stack_a->top->content <= max_in_chunk)
-				pb(stack_a, stack_b, counter);
-			else
-				ra(stack_a, counter);
-			checked_items++;
-		}
+		if (!stack_a->top)
+			break ;
+		r.min_in_chunk = min_value + i * range_of_chunk / num_of_chunks;
+		r.max_in_chunk = min_value + (i + 1) * range_of_chunk / num_of_chunks;
+		if (i == num_of_chunks - 1)
+			r.max_in_chunk = find_max_num(stack_a);
+		pb_or_ra(stack_a, stack_b, counter, &r);
 		i++;
 	}
-	while (stack_a->size > 0)//no se vaciaba completamente por el redondeo, entonces mientras haya algo que lo pase a b
-		pb(stack_a, stack_b, counter);
 	final_order_and_push(stack_a, stack_b, counter);
-} */
-
-
+}

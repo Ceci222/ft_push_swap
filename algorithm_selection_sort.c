@@ -9,12 +9,10 @@ int	find_min_pos(t_stack *stack_a)
 
 	if (!stack_a || !stack_a->top)
 		return (-1);
-
 	index = 0;
 	current_min_num_position = 0;
 	current = stack_a->top;
 	node_content = stack_a->top->content;
-
 	while (current != NULL)
 	{
 		if (current->content < node_content)
@@ -23,8 +21,7 @@ int	find_min_pos(t_stack *stack_a)
 			current_min_num_position = index;
 		}
 		index++;
-
-		current= current->next;
+		current = current->next;
 	}
 	return (current_min_num_position);
 }
@@ -36,15 +33,13 @@ int	find_min_num(t_stack *stack_a)
 
 	if (!stack_a || !stack_a->top)
 		return (-1);
-
 	current = stack_a->top;
 	min = stack_a->top->content;
-
 	while (current != NULL)
 	{
 		if (current->content < min)
 			min = current->content;
-		current= current->next;
+		current = current->next;
 	}
 	return (min);
 }
@@ -56,7 +51,7 @@ void	sort_simple(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 	while (stack_a->size > 5)
 	{
 		min_pos = find_min_pos(stack_a);
-		if (min_pos <= stack_a->size/2)
+		if (min_pos <= stack_a->size / 2)
 		{
 			while (stack_a->top->content != find_min_num(stack_a))
 				ra(stack_a, counter);

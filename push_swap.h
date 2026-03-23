@@ -1,6 +1,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-//Once it finds STRATEGY_SIMPLE in the code it replaces it with "Simple / O(n^2)"
+
 # define STRATEGY_SIMPLE "Simple / O(n^2)"
 # define STRATEGY_MEDIUM "Medium / O(n*sqrt(n))"
 # define STRATEGY_COMPLEX "Complex / O(n log n)"
@@ -17,6 +17,8 @@ typedef struct s_node
 	long			content;
 	struct s_node	*prev;
 	struct s_node	*next;
+	struct s_node	*target;
+
 }					t_node;
 
 typedef struct s_stack
@@ -42,13 +44,25 @@ typedef struct s_counter
 	int	total;
 }			t_counter;
 
-void	ft_print_stack(t_stack *stack);
+typedef struct s_range
+{
+	int	min_in_chunk;
+	int	max_in_chunk;
+}			t_range;
+
+typedef struct s_sort_context
+{
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+	char		*strategy;
+	double		disorder;
+}			t_sort_context;
+
 void	pb(t_stack *a, t_stack *b, t_counter *counter);
 void	pa(t_stack *a, t_stack *b, t_counter *counter);
 void	ft_error(void);
-void	ft_free_stack(t_stack *stack);
 void	ft_free_char(char **data_parsed);
-void	push_swap(int argc, char **argv);
+void	push_swap(int argc, char **argv, t_sort_context *context);
 void	ft_lstadd_back(t_node **lst, t_node *new);
 void	ft_lstadd_front(t_node **lst, t_node *new);
 void	ft_lstclear(t_node **lst, void (*del)(void *));
@@ -75,7 +89,7 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
 void	sort_five(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
 void	ft_init_counter(t_counter *counter);
 void	sort_simple(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
-void	final_order_and_push(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
+void	final_order_and_push(t_stack *a, t_stack *b, t_counter *count);
 void	ft_print_benchmark(t_counter *counter, double disorder, char *strategy);
 void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
 void	sort_adaptive(t_stack *a, t_stack *b, t_counter *counter, float dis);
@@ -84,11 +98,15 @@ int		is_duplicate(t_stack *stack, long num);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_lstsize(t_node *lst);
 int		find_min_pos(t_stack *stack_a);
+int		find_max_pos(t_stack *stack_a);
 int		find_min_num(t_stack *stack_a);
 int		find_max_num(t_stack *stack_a);
 int		is_ordered(t_stack *stack_a);
-//int		find_pos(t_stack *stack_a, t_node *node);
+int		find_pos(t_stack *stack_a, t_node *node);
+int		total_cost(t_stack *a, t_stack *b, t_node *node, t_node *target_b);
 char	**ft_parser(int argc, char **argv, int i);
+t_node	*find_target_in_b(t_stack *stack_b, int value);
+t_node	*find_cheapest(t_stack *stack_a, t_stack *stack_b);
 t_node	*ft_lstlast(t_node *lst);
 t_node	*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *));
 t_node	*ft_create_node(long content);
@@ -96,5 +114,7 @@ t_stack	*ft_fill_stack(char **arg);
 t_stack	*ft_create_stack(void);
 double	ft_compute_disorder(t_stack *stack_a);
 void	sort_turk(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
+void	r_or_rr_moves(t_stack *a, t_stack *b, t_node *node, t_counter *count);
+t_node	*find_extremum(t_stack *stack, int find_max);
 
 #endif

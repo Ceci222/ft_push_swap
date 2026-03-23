@@ -4,7 +4,7 @@ void	pa(t_stack *a, t_stack *b, t_counter *counter)
 {
 	t_node	*tmp;
 
-	if (!a || !b || b->size == 0) //aquí pusimos a->size :S
+	if (!a || !b || b->size == 0)
 		return ;
 	tmp = b->top;
 	b->top = tmp->next;
