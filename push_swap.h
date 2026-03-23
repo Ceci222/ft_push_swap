@@ -44,16 +44,12 @@ typedef struct s_counter
 	int	total;
 }			t_counter;
 
-<<<<<<< HEAD
 typedef struct s_range
 {
     int min_in_chunk;
     int max_in_chunk;
 }   t_range;
 
-void	ft_print_stack(t_stack *stack);
-=======
->>>>>>> f87321b9a0eb7859cc62912d28cd0bbb08d3431a
 void	pb(t_stack *a, t_stack *b, t_counter *counter);
 void	pa(t_stack *a, t_stack *b, t_counter *counter);
 void	ft_error(void);
