@@ -75,6 +75,30 @@ static void	ft_pb_or_ra(t_stack *stack_a, t_stack *stack_b,  t_counter *counter,
 	}
 }
 
+void	final_order_and_push(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
+{
+
+	int	max_pos;
+	int	max_val; //la declarabamos arriba pero la usabamos aquí :S
+
+	while (stack_b->size != 0)
+	{
+		max_pos = find_max_pos(stack_b);
+		max_val = find_max_num(stack_b);
+		if (max_pos <= stack_b-> size/2)
+		{
+			while (stack_b->top->content != max_val)
+				rb(stack_b, counter);
+		}
+		else
+		{
+			while (stack_b->top->content != max_val)
+				rrb(stack_b, counter);
+		}
+		pa(stack_a, stack_b, counter);
+	}
+}
+
 static void	ft_initialize_variables(t_stack *stack_a, int *i, int *size, int *min_value, long *range, int *num_of_chunks)
 {
 	*i = 0;
@@ -125,6 +149,7 @@ void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 		} */
 		i++;
 	}
+	final_order_and_push(stack_a, stack_b, counter);
 } 
 
 /* void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
@@ -168,26 +193,4 @@ void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 	final_order_and_push(stack_a, stack_b, counter);
 } */
 
-/* void	final_order_and_push(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
-{
 
-	int	max_pos;
-	int	max_val; //la declarabamos arriba pero la usabamos aquí :S
-
-	while (stack_b->size != 0)
-	{
-		max_pos = find_max_pos(stack_b);
-		max_val = find_max_num(stack_b);
-		if (max_pos <= stack_b-> size/2)
-		{
-			while (stack_b->top->content != max_val)
-				rb(stack_b, counter);
-		}
-		else
-		{
-			while (stack_b->top->content != max_val)
-				rrb(stack_b, counter);
-		}
-		pa(stack_a, stack_b, counter);
-	}
-} */

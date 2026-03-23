@@ -25,7 +25,7 @@ void	rotate(t_stack *stack)
 void	ra(t_stack *a, t_counter *counter)
 {
 	rotate(a);
-	if(counter)
+	if (counter)
 	{
 		counter->ra++;
 		counter->total++;
@@ -37,7 +37,7 @@ void	ra(t_stack *a, t_counter *counter)
 void	rb(t_stack *b, t_counter *counter)
 {
 	rotate(b);
-	if(counter)
+	if (counter)
 	{
 		counter->rb++;
 		counter->total++;
@@ -50,7 +50,7 @@ void	rr(t_stack *a, t_stack *b, t_counter *counter)
 {
 	rotate(a);
 	rotate(b);
-	if(counter)
+	if (counter)
 	{
 		counter->rr++;
 		counter->total++;

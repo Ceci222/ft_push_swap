@@ -11,13 +11,12 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 	second = stack_a->top->next->content;
 	third = stack_a->top->next->next->content;
 	fourth = stack_a->bottom->content;
-
 	if (first < second && second < third && third < fourth)
 		return ;
 	if (second < first && second < third && second < fourth)
 		sa(stack_a, counter);
 	else if (second < first && second < third && second < fourth)
-		return(sa(stack_a, counter), (void)(0));
+		return (sa(stack_a, counter), (void)(0));
 	if (third < fourth && third < second && third < first)
 	{
 		ra(stack_a, counter);

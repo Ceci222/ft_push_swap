@@ -5,7 +5,6 @@ void	sort_two(t_stack *stack, t_counter *counter)
 	t_node	*first;
 	t_node	*second;
 
-
 	first = stack->top;
 	second = first->next;
 	if (first->content < second->content)

@@ -12,11 +12,9 @@ void	reverse_rotate(t_stack *stack)
 		swap_one(stack);
 		return ;
 	}
-
 	tmp_bottom = stack->bottom;
 	tmp_top = stack->top;
 	stack->top->prev = tmp_bottom;
-
 	stack->top = tmp_bottom;
 	stack->bottom = stack->bottom->prev;
 	tmp_bottom->prev = NULL;
@@ -27,7 +25,7 @@ void	reverse_rotate(t_stack *stack)
 void	rra(t_stack *a, t_counter *counter)
 {
 	reverse_rotate(a);
-	if(counter)
+	if (counter)
 	{
 		counter->rra++;
 		counter->total++;
@@ -39,7 +37,7 @@ void	rra(t_stack *a, t_counter *counter)
 void	rrb(t_stack *b, t_counter *counter)
 {
 	reverse_rotate(b);
-	if(counter)
+	if (counter)
 	{
 		counter->rrb++;
 		counter->total++;
@@ -52,7 +50,7 @@ void	rrr(t_stack *a, t_stack *b, t_counter *counter)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	if(counter)
+	if (counter)
 	{
 		counter->rrr++;
 		counter->total++;
