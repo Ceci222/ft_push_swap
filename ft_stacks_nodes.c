@@ -26,21 +26,6 @@ t_node	*ft_create_node(long content)
 	return (new_node);
 }
 
-void	ft_print_stack(t_stack *stack)
-{
-	t_node	*current;
-
-	if (!stack)
-		return ;
-	current = stack->top;
-	while (current != NULL)
-	{
-		printf("%ld ", current->content);
-		current = current->next;
-	}
-	printf("\n");
-}
-
 void	ft_node_to_bottom(t_stack *stack, long value)
 {
 	t_node	*new;
