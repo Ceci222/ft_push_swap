@@ -17,6 +17,8 @@ typedef struct s_node
 	long			content;
 	struct s_node	*prev;
 	struct s_node	*next;
+	struct s_node	*target;
+
 }					t_node;
 
 typedef struct s_stack
@@ -42,11 +44,9 @@ typedef struct s_counter
 	int	total;
 }			t_counter;
 
-void	ft_print_stack(t_stack *stack);
 void	pb(t_stack *a, t_stack *b, t_counter *counter);
 void	pa(t_stack *a, t_stack *b, t_counter *counter);
 void	ft_error(void);
-void	ft_free_stack(t_stack *stack);
 void	ft_free_char(char **data_parsed);
 void	push_swap(int argc, char **argv);
 void	ft_lstadd_back(t_node **lst, t_node *new);
@@ -87,8 +87,9 @@ int		find_min_pos(t_stack *stack_a);
 int		find_min_num(t_stack *stack_a);
 int		find_max_num(t_stack *stack_a);
 int		is_ordered(t_stack *stack_a);
-//int		find_pos(t_stack *stack_a, t_node *node);
 char	**ft_parser(int argc, char **argv, int i);
+t_node 	*find_target_in_b(t_stack *stack_b, int value);
+t_node	*find_cheapest(t_stack *stack_a, t_stack *stack_b);
 t_node	*ft_lstlast(t_node *lst);
 t_node	*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *));
 t_node	*ft_create_node(long content);
@@ -96,5 +97,8 @@ t_stack	*ft_fill_stack(char **arg);
 t_stack	*ft_create_stack(void);
 double	ft_compute_disorder(t_stack *stack_a);
 void	sort_turk(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
+void	ft_r_or_rr_moves(t_stack *stack_a, t_stack *stack_b, t_node *node,t_counter *counter);
+t_node	*find_min_node(t_stack *stack);
+t_node	*find_max_node(t_stack *stack_b);
 
 #endif

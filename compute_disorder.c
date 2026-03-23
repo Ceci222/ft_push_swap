@@ -3,14 +3,14 @@
 double	ft_compute_disorder(t_stack *stack_a)
 {
 	double	mistakes;
-    double	total_pairs;
+	double	total_pairs;
 	t_node	*first_node;
 	t_node	*second_node;
 
 	first_node = stack_a->top;
 	second_node = NULL;
 	mistakes = 0;
-    total_pairs = 0;
+	total_pairs = 0;
 	while (first_node != NULL)
 	{
 		second_node = first_node->next;
@@ -23,5 +23,5 @@ double	ft_compute_disorder(t_stack *stack_a)
 		}
 		first_node = first_node->next;
 	}
-	return (mistakes/total_pairs);
+	return (mistakes / total_pairs);
 }
