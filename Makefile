@@ -19,7 +19,7 @@ DIR = srcs/
 SRCS = push_swap.c push_swap_utils.c ft_errors_frees.c ft_stacks_nodes.c ps_parser.c push.c \
 swap.c rotate.c reverse_rotate.c sort_two.c sort_three.c sort_four.c sort_five.c counter_initializer.c\
 compute_disorder.c algorithm_selection_sort.c algorithm_chunks.c algorithm_turk.c is_ordered.c\
-ft_print_benchmark.c sort_adaptive.c ft_strcmp.c
+ft_print_benchmark.c sort_adaptive.c ft_strcmp.c find_max_num.c	find_max_pos.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -42,6 +42,12 @@ typedef struct s_counter
 	int	total;
 }			t_counter;
 
+typedef struct s_range
+{
+    int min_in_chunk;
+    int max_in_chunk;
+}   t_range;
+
 void	ft_print_stack(t_stack *stack);
 void	pb(t_stack *a, t_stack *b, t_counter *counter);
 void	pa(t_stack *a, t_stack *b, t_counter *counter);
@@ -84,6 +90,7 @@ int		is_duplicate(t_stack *stack, long num);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_lstsize(t_node *lst);
 int		find_min_pos(t_stack *stack_a);
+int		find_max_pos(t_stack *stack_a);
 int		find_min_num(t_stack *stack_a);
 int		find_max_num(t_stack *stack_a);
 int		is_ordered(t_stack *stack_a);

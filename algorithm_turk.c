@@ -240,17 +240,6 @@ void	sort_turk(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
 		execute_move(stack_a, stack_b, cheapest, target, counter);
 	}
 	push_max_to_a(stack_b, stack_a, counter);
-/* 	while (stack_b->size > 0)
-	{
-		while (stack_b->top != find_max_node(stack_b))
-		{
-			if (find_pos(stack_b, find_max_node(stack_b)) <= stack_b->size / 2)
-				rb(stack_b, counter);
-			else
-				rrb(stack_b, counter);
-		}
-		pa(stack_a, stack_b, counter);
-	} */
 }
 
 
