@@ -29,10 +29,10 @@ char	**ft_parser(int argc, char **argv, int i)
 		while (i < argc)
 		{
 			if (read_flags(argv[i]) != 0)
-            {
-                i++;
-                continue ;
-            }
+			{
+				i++;
+				continue ;
+			}
 			temp = ft_strjoin(full_string, " ");
 			free(full_string);
 			full_string = ft_strjoin(temp, argv[i]);
@@ -44,19 +44,17 @@ char	**ft_parser(int argc, char **argv, int i)
 	return (free(full_string), final_data);
 }
 
-static void	convert(char *arg, t_stack *stack_a)
+static int	convert(char *arg, t_stack *stack_a)
 {
 	long	num;
-	t_node	*number_node;
 
 	num = ft_atol(arg);
 	if (num > 2147483647 || num < -2147483648)
-		return (ft_free_stack(stack_a), ft_error(), (void)(0));
+		return (0);
 	if (is_duplicate(stack_a, num))
-		return (ft_free_stack(stack_a), (void)(0));
-	number_node = ft_create_node(num);
-	ft_node_to_bottom(stack_a, number_node -> content);
-	free(number_node);
+		return (0);
+	ft_node_to_bottom(stack_a, num);
+	return (1);
 }
 
 t_stack	*ft_fill_stack(char **arg)
@@ -66,6 +64,8 @@ t_stack	*ft_fill_stack(char **arg)
 
 	stack_a = ft_create_stack();
 	i = 0;
+	if (!arg || !arg[i])
+		return (ft_free_stack(stack_a), NULL);
 	if (read_flags(arg[i]) == 1)
 		i++;
 	else if (read_flags(arg[i]) == 2)
@@ -74,9 +74,9 @@ t_stack	*ft_fill_stack(char **arg)
 		return (ft_free_stack(stack_a), NULL);
 	while (arg[i])
 	{
-		if (is_right_number(arg[i]))
-			convert(arg[i], stack_a);
-		else
+		if (!is_right_number(arg[i]))
+			return (ft_free_stack(stack_a), ft_error(), NULL);
+		if (!convert(arg[i], stack_a))
 			return (ft_free_stack(stack_a), ft_error(), NULL);
 		i++;
 	}

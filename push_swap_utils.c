@@ -11,7 +11,7 @@ int	is_duplicate(t_stack *stack, long num)
 	{
 		if (current -> content == num)
 		{
-			ft_error();
+			//ft_error();
 			return (1);
 		}
 		current = current -> next;
