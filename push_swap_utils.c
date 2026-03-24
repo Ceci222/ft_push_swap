@@ -45,3 +45,32 @@ long	ft_is_valid_num(char *str)
 		return (ft_error(), (0));
 	return (num);
 }
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int		i;
+
+	i = 0;
+	while (s1[i] && s1[i] == s2[i])
+	{
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+int	is_ordered(t_stack *stack_a)
+{
+	t_node	*current;
+
+	if (!stack_a->top)
+		return (0);
+	current = stack_a->top;
+	while (current->next != NULL)
+	{
+		if (current->content < current->next->content)
+			current = current->next;
+		else
+			return (0);
+	}
+	return (1);
+}

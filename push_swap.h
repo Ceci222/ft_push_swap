@@ -1,8 +1,8 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define STRATEGY_SIMPLE "Simple / O(n^2)"
-# define STRATEGY_MEDIUM "Medium / O(n*sqrt(n))"
+# define STRATEGY_SIMPLE "Simple / O(n²)"
+# define STRATEGY_MEDIUM "Medium / O(n√(n))"
 # define STRATEGY_COMPLEX "Complex / O(n log n)"
 # define STRATEGY_ADAPTIVE "Adaptive"
 
@@ -10,7 +10,6 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
 
 typedef struct s_node
 {
@@ -62,11 +61,6 @@ void	pa(t_stack *a, t_stack *b, t_counter *counter);
 void	ft_error(void);
 void	ft_free_char(char **data_parsed);
 void	push_swap(int argc, char **argv);
-void	ft_lstadd_back(t_node **lst, t_node *new);
-void	ft_lstadd_front(t_node **lst, t_node *new);
-void	ft_lstclear(t_node **lst, void (*del)(void *));
-void	ft_lstdelone(t_node *lst, void (*del)(void *));
-void	ft_lstiter(t_node *lst, void (*f)(void *));
 void	ft_free_stack(t_stack *stack);
 void	ft_node_to_bottom(t_stack *stack, long value);
 void	free_stack_and_char(t_stack *stack_a, t_stack *stack_b, char **data);
@@ -108,7 +102,6 @@ t_node	*find_target_in_b(t_stack *stack_b, int value);
 t_node	*find_cheapest(t_stack *stack_a, t_stack *stack_b);
 t_node	*ft_lstlast(t_node *lst);
 t_node	*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *));
-t_node	*ft_create_node(long content);
 t_stack	*ft_fill_stack(char **arg);
 t_stack	*ft_create_stack(void);
 double	ft_compute_disorder(t_stack *stack_a);
