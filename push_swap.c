@@ -72,7 +72,7 @@ void	push_swap(int argc, char **argv)
 	{
 		if (context.bench == 1)
 			ft_print_benchmark(&counter, context.disorder, context.strategy);
-		return ;
+		return (free_stack_and_char(stack_a, stack_b, data_parsed), (void)(0));
 	}
 	ft_execute_sort(stack_a, stack_b, &counter, context.strategy);
 	if (context.bench == 1)

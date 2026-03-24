@@ -42,9 +42,23 @@ void	ft_print_benchmark(t_counter *counter, double disorder, char *strategy)
 	ft_putstr_fd("%\n", 2);
 	ft_putstr_fd("[bench] strategy: ", 2);
 	ft_putstr_fd(strategy, 2);
+	adptive_checker(disorder, strategy);
 	ft_putchar_fd('\n', 2);
 	ft_putstr_fd("[bench] total_ops: ", 2);
 	ft_putnbr_fd(counter->total, 2);
 	ft_putchar_fd('\n', 2);
 	ft_print_moves(counter);
+}
+
+void	adptive_checker(double disorder, char *strategy)
+{
+	if (strategy != NULL && ft_strcmp(strategy, STRATEGY_ADAPTIVE) == 0)
+	{
+		if (disorder < 0.2)
+			ft_putstr_fd(" O(n²)", 2);
+		else if (disorder < 0.5)
+			ft_putstr_fd(" O(n√(n))", 2);
+		else
+			ft_putstr_fd(" O(n log n)", 2);
+	}
 }

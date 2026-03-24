@@ -8,7 +8,6 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdio.h>
 # include "libft/libft.h"
 
 typedef struct s_node
@@ -64,7 +63,6 @@ void	push_swap(int argc, char **argv);
 void	ft_free_stack(t_stack *stack);
 void	ft_node_to_bottom(t_stack *stack, long value);
 void	free_stack_and_char(t_stack *stack_a, t_stack *stack_b, char **data);
-void	swap_one(t_stack *stack);
 void	sa(t_stack *a, t_counter *counter);
 void	sb(t_stack *b, t_counter *counter);
 void	ss(t_stack *a, t_stack *b, t_counter *counter);
@@ -86,6 +84,10 @@ void	final_order_and_push(t_stack *a, t_stack *b, t_counter *count);
 void	ft_print_benchmark(t_counter *counter, double disorder, char *strategy);
 void	sort_chunks(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
 void	sort_adaptive(t_stack *a, t_stack *b, t_counter *counter, float dis);
+void	adptive_checker( double disorder, char *strategy);
+void	sort_turk(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
+void	r_or_rr_moves(t_stack *a, t_stack *b, t_node *node, t_counter *count);
+int		swap_one(t_stack *stack);
 int		is_right_number(char *str);
 int		is_duplicate(t_stack *stack, long num);
 int		ft_strcmp(const char *s1, const char *s2);
@@ -102,11 +104,9 @@ t_node	*find_target_in_b(t_stack *stack_b, int value);
 t_node	*find_cheapest(t_stack *stack_a, t_stack *stack_b);
 t_node	*ft_lstlast(t_node *lst);
 t_node	*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *));
+t_node	*find_extremum(t_stack *stack, int find_max);
 t_stack	*ft_fill_stack(char **arg);
 t_stack	*ft_create_stack(void);
 double	ft_compute_disorder(t_stack *stack_a);
-void	sort_turk(t_stack *stack_a, t_stack *stack_b, t_counter *counter);
-void	r_or_rr_moves(t_stack *a, t_stack *b, t_node *node, t_counter *count);
-t_node	*find_extremum(t_stack *stack, int find_max);
 
 #endif

@@ -1,12 +1,12 @@
 #include "push_swap.h"
 
-void	swap_one(t_stack *stack)
+int	swap_one(t_stack *stack)
 {
 	t_node	*tmp_top;
 	t_node	*tmp_second;
 
 	if (!stack || stack->size < 2)
-		return ;
+		return (1);
 	tmp_top = stack->top;
 	tmp_second = stack->top->next;
 	tmp_top->prev = tmp_second;
@@ -21,30 +21,35 @@ void	swap_one(t_stack *stack)
 		stack->bottom = tmp_top;
 	else
 		tmp_top->next->prev = tmp_top;
+	return (0);
 }
 
 void	sa(t_stack *a, t_counter *counter)
 {
-	swap_one(a);
-	if (counter)
+	if (!swap_one(a))
 	{
-		counter->sa++;
-		counter->total++;
+		if (counter)
+		{
+			counter->sa++;
+			counter->total++;
+		}
+		write(1, "sa", 2);
+		write(1, "\n", 1);
 	}
-	write(1, "sa", 2);
-	write(1, "\n", 1);
 }
 
 void	sb(t_stack *b, t_counter *counter)
 {
-	swap_one(b);
-	if (counter)
+	if (!swap_one(b))
 	{
-		counter->sb++;
-		counter->total++;
+		if (counter)
+		{
+			counter->sb++;
+			counter->total++;
+		}
+		write(1, "sb", 2);
+		write(1, "\n", 1);
 	}
-	write(1, "sb", 2);
-	write(1, "\n", 1);
 }
 
 void	ss(t_stack *a, t_stack *b, t_counter *counter)
