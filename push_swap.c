@@ -53,28 +53,26 @@ static void	ft_execute_sort(t_stack *stack_a, t_stack *stack_b, t_counter *count
 
 void	push_swap(int argc, char **argv)
 {
-	t_stack		*stack_b;
-	t_stack		*stack_a;
-	double		temp;
-	char		**data_parsed;
-	t_counter	counter;
-	int 		bench;
-	char		*strategy;
+	t_stack			*stack_b;
+	t_stack			*stack_a;
+	char			**data_parsed;
+	t_counter		counter;
+	t_sort_context	context;
 
-	ft_get_strategy(argc, argv, &bench, &strategy);
+	ft_get_strategy(argc, argv, &context.bench, &context.strategy);
 	ft_init_counter(&counter);
 	data_parsed = ft_parser(argc, argv, 1);
 	stack_a = ft_fill_stack(data_parsed);
-	temp = ft_compute_disorder(stack_a);
 	stack_b = ft_create_stack();
 	if (!stack_a || !stack_b || is_ordered(stack_a))
 	{
 		free_stack_and_char(stack_a, stack_b, data_parsed); 
 		return ;
 	}
-	ft_execute_sort(stack_a, stack_b, &counter, strategy);
-	if (bench == 1)
-		ft_print_benchmark(&counter, temp, strategy);
+	context.disorder = ft_compute_disorder(stack_a);
+	ft_execute_sort(stack_a, stack_b, &counter, context.strategy);
+	if (context.bench == 1)
+		ft_print_benchmark(&counter, context.disorder, context.strategy);
 	free_stack_and_char(stack_a, stack_b, data_parsed);
 }
 int	main(int argc, char **argv)

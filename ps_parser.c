@@ -28,11 +28,11 @@ char	**ft_parser(int argc, char **argv, int i)
 		full_string = ft_strdup("");
 		while (i < argc)
 		{
-			if (read_flags(argv[i]) == 1)
-			{
-				i++;
-				continue ;
-			}
+			if (read_flags(argv[i]) != 0)
+            {
+                i++;
+                continue ;
+            }
 			temp = ft_strjoin(full_string, " ");
 			free(full_string);
 			full_string = ft_strjoin(temp, argv[i]);

@@ -52,17 +52,16 @@ typedef struct s_range
 
 typedef struct s_sort_context
 {
-	t_stack		*stack_a;
-	t_stack		*stack_b;
 	char		*strategy;
 	double		disorder;
+	int			bench;
 }			t_sort_context;
 
 void	pb(t_stack *a, t_stack *b, t_counter *counter);
 void	pa(t_stack *a, t_stack *b, t_counter *counter);
 void	ft_error(void);
 void	ft_free_char(char **data_parsed);
-void	push_swap(int argc, char **argv, t_sort_context *context);
+void	push_swap(int argc, char **argv);
 void	ft_lstadd_back(t_node **lst, t_node *new);
 void	ft_lstadd_front(t_node **lst, t_node *new);
 void	ft_lstclear(t_node **lst, void (*del)(void *));
