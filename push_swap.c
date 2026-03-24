@@ -25,7 +25,8 @@ static void	ft_get_strategy(int argc, char **argv, int *bench, char **strategy)
 		*strategy = STRATEGY_ADAPTIVE;
 }
 
-static void	ft_execute_sort(t_stack *stack_a, t_stack *stack_b, t_counter *counter, char *strategy)
+static void	ft_execute_sort(t_stack *stack_a, t_stack *stack_b,
+			t_counter *counter, char *strategy)
 {
 	float		disorder;
 
@@ -64,17 +65,21 @@ void	push_swap(int argc, char **argv)
 	data_parsed = ft_parser(argc, argv, 1);
 	stack_a = ft_fill_stack(data_parsed);
 	stack_b = ft_create_stack();
-	if (!stack_a || !stack_b || is_ordered(stack_a))
+	if (!stack_a || !stack_b)
+		return (free_stack_and_char(stack_a, stack_b, data_parsed), (void)(0));
+	context.disorder = ft_compute_disorder(stack_a);
+	if (is_ordered(stack_a))
 	{
-		free_stack_and_char(stack_a, stack_b, data_parsed); 
+		if (context.bench == 1)
+			ft_print_benchmark(&counter, context.disorder, context.strategy);
 		return ;
 	}
-	context.disorder = ft_compute_disorder(stack_a);
 	ft_execute_sort(stack_a, stack_b, &counter, context.strategy);
 	if (context.bench == 1)
 		ft_print_benchmark(&counter, context.disorder, context.strategy);
 	free_stack_and_char(stack_a, stack_b, data_parsed);
 }
+
 int	main(int argc, char **argv)
 {
 	push_swap(argc, argv);

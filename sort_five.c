@@ -1,6 +1,7 @@
 #include "push_swap.h"
 
-static	void	base_move(t_stack *stack_a, t_stack *stack_b, t_counter *counter)
+static	void	base_move(t_stack *stack_a, t_stack *stack_b,
+			t_counter *counter)
 {
 	pb(stack_a, stack_b, counter);
 	sort_four(stack_a, stack_b, counter);

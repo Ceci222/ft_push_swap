@@ -9,8 +9,6 @@ void	sort_three(t_stack *stack, t_counter *counter)
 	first = stack->top;
 	second = first->next;
 	third = second ->next;
-/* 	if (first->content < second->content && second->content < third->content)
-		return ; */
 	if (first->content < second->content && third->content < second->content
 		&& first->content > third->content)
 		return (rra(stack, counter), (void)(0));

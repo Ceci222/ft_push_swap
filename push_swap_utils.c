@@ -10,10 +10,7 @@ int	is_duplicate(t_stack *stack, long num)
 	while (current != NULL)
 	{
 		if (current -> content == num)
-		{
-			//ft_error();
 			return (1);
-		}
 		current = current -> next;
 	}
 	return (0);

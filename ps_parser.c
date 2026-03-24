@@ -66,10 +66,6 @@ t_stack	*ft_fill_stack(char **arg)
 	i = 0;
 	if (!arg || !arg[i])
 		return (ft_free_stack(stack_a), NULL);
-	if (read_flags(arg[i]) == 1)
-		i++;
-	else if (read_flags(arg[i]) == 2)
-		i++;
 	if (!arg[i])
 		return (ft_free_stack(stack_a), NULL);
 	while (arg[i])

@@ -1,20 +1,21 @@
 #include "push_swap.h"
 
-void	r_or_rr_moves(t_stack *a, t_stack *b, t_node *node, t_counter *count)
+void	r_or_rr_moves(t_stack *stack_a, t_stack *stack_b,
+			t_node *node, t_counter *count)
 {
-	while (a->top != node)
+	while (stack_a->top != node)
 	{
-		if (find_pos(a, node) <= a->size / 2)
-			ra(a, count);
+		if (find_pos(stack_a, node) <= stack_a->size / 2)
+			ra(stack_a, count);
 		else
-			rra(a, count);
+			rra(stack_a, count);
 	}
-	while (b->top != node->target)
+	while (stack_b->top != node->target)
 	{
-		if (find_pos(b, node->target) <= b->size / 2)
-			rb(b, count);
+		if (find_pos(stack_b, node->target) <= stack_b->size / 2)
+			rb(stack_b, count);
 		else
-			rrb(b, count);
+			rrb(stack_b, count);
 	}
 }
 
