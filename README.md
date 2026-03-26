@@ -118,4 +118,4 @@ La IA se utilizó como herramienta de apoyo técnico y documental, especialmente
 - `Explicaciones técnicas:` soporte para comprender y reforzar el uso y manejo de listas doblemente enlazadas (estructura de nodos, punteros prev/next, inserciones, extracciones y rotaciones).
 - `Redacción supervisada de este documento:` mejora de claridad, organización y estilo del README, manteniendo validación y criterio final humano.
 
-La implementación, pruebas y validación final del comportamiento del programa fueron realizadas por el equipo.
+La implementación, pruebas y validación final del comportamiento del programa fueron realizadas por el equipo, es decir, el proceso del desarrollo de codigo ha sido el mismo para cada integrante.
