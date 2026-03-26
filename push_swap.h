@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cscaroni <cscaroni@student.42urduliz.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/26 14:55:37 by cscaroni          #+#    #+#             */
+/*   Updated: 2026/03/26 14:57:43 by cscaroni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -91,7 +103,6 @@ int		swap_one(t_stack *stack);
 int		is_right_number(char *str);
 int		is_duplicate(t_stack *stack, long num);
 int		ft_strcmp(const char *s1, const char *s2);
-int		ft_lstsize(t_node *lst);
 int		find_min_pos(t_stack *stack_a);
 int		find_max_pos(t_stack *stack_a);
 int		find_min_num(t_stack *stack_a);
@@ -102,8 +113,6 @@ int		total_cost(t_stack *a, t_stack *b, t_node *node, t_node *target_b);
 char	**ft_parser(int argc, char **argv, int i);
 t_node	*find_target_in_b(t_stack *stack_b, int value);
 t_node	*find_cheapest(t_stack *stack_a, t_stack *stack_b);
-t_node	*ft_lstlast(t_node *lst);
-t_node	*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *));
 t_node	*find_extremum(t_stack *stack, int find_max);
 t_stack	*ft_fill_stack(char **arg);
 t_stack	*ft_create_stack(void);
